@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro Oftalmológico de Taubaté — Excelência e precisão em saúde ocular</title>
+<meta name="description" content="No Centro Oftalmológico de Taubaté aliamos experiência consolidada e rigor científico para oferecer diagnósticos precisos e tratamentos de alta complexidade. Referência em Taubaté e Região.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root{
+    --navy:#000091; --royal:#5F5BD9; --lavender:#AAA7F2; --beige:#F2DAAC;
+    --offwhite:#F2F2F2; --ink:#0B0B33; --white:#fff; --wa:#25D366;
+    --sh-sm:0 2px 6px -2px rgba(0,0,145,.28);
+    --sh-md:0 10px 24px -14px rgba(0,0,145,.5);
+    --sh-lg:0 22px 44px -20px rgba(0,0,145,.6);
+    --r-sm:8px; --r-md:14px; --r-lg:22px; --r-xl:24px;
+    --max:1240px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  html,body{ overflow-x:hidden; max-width:100%; }
+  body{ margin:0; background:var(--offwhite); color:var(--ink); font-family:'Montserrat',system-ui,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.5; }
+  h1,h2,h3,h4{ margin:0; letter-spacing:-0.02em; }
+  p{ margin:0; }
+  a{ color:var(--royal); text-decoration:none; }
+  a:hover{ color:var(--navy); }
+  img{ max-width:100%; display:block; }
+  ::selection{ background:var(--lavender); color:var(--navy); }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 32px; }
+  .mono{ font-family:'JetBrains Mono',monospace; }
+  .eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--royal); }
+
+  /* ---------- buttons ---------- */
+  .btn{ border:none; cursor:pointer; font-family:inherit; padding:15px 26px; border-radius:999px; font-size:15px; font-weight:600; display:inline-flex; align-items:center; gap:10px; transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease; }
+  .btn i{ width:17px; height:17px; }
+  .btn-primary{ background:var(--navy); color:var(--white); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 26px -12px rgba(0,0,145,.6); color:#fff; }
+  .btn-royal{ background:var(--royal); color:var(--white); }
+  .btn-royal:hover{ transform:translateY(-2px); box-shadow:0 14px 26px -12px rgba(95,91,217,.7); color:#fff; }
+  .btn-outline{ background:transparent; color:var(--navy); border:1.5px solid var(--navy); }
+  .btn-outline:hover{ background:var(--navy); color:#fff; transform:translateY(-2px); }
+  .btn-light{ background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.25); }
+  .btn-light:hover{ background:rgba(255,255,255,.2); color:#fff; transform:translateY(-2px); }
+  .btn-wa{ background:var(--wa); color:#06331b; font-weight:700; }
+  .btn-wa:hover{ transform:translateY(-2px) scale(1.02); color:#06331b; }
+
+  /* ---------- nav ---------- */
+  nav.top{ position:sticky; top:0; z-index:50; background:rgba(242,242,242,.82); backdrop-filter:blur(14px); border-bottom:1px solid rgba(0,0,145,.10); }
+  nav.top .wrap{ display:flex; align-items:center; justify-content:space-between; gap:24px; padding-top:14px; padding-bottom:14px; }
+  nav.top a.brand{ display:flex; align-items:center; gap:12px; }
+  nav.top a.brand img{ height:34px; }
+  .navlinks{ display:flex; align-items:center; gap:26px; font-size:14px; font-weight:500; }
+  .navlinks a{ color:var(--ink); position:relative; }
+  .navlinks a::after{ content:""; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:currentColor; transition:width .3s ease; }
+  .navlinks a:hover{ color:var(--navy); }
+  .navlinks a:hover::after{ width:100%; }
+  .nav-cta{ display:flex; align-items:center; gap:14px; }
+  .menu-btn{ display:none; background:none; border:none; cursor:pointer; color:var(--navy); }
+
+  /* ---------- hero ---------- */
+  header.hero{ position:relative; background:var(--navy); color:#fff; overflow:hidden; }
+  .hero .waves{ position:absolute; inset:-10% -5% auto -5%; opacity:.14; pointer-events:none; }
+  .hero .waves .track{ display:flex; width:200%; animation:waveMove 22s linear infinite; }
+  .hero .waves svg{ width:50%; height:230px; }
+  .hero .glow{ position:absolute; right:-140px; top:40px; width:460px; height:460px; border-radius:999px; background:radial-gradient(circle at 30% 30%, rgba(95,91,217,.55), transparent 62%); filter:blur(10px); pointer-events:none; }
+  .hero .wrap{ position:relative; display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; padding-top:72px; padding-bottom:96px; }
+  .badge{ display:inline-flex; align-items:center; gap:10px; padding:7px 15px; border:1px solid rgba(170,167,242,.4); border-radius:999px; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--lavender); }
+  .badge .dot{ width:7px; height:7px; border-radius:999px; background:var(--lavender); }
+  .hero h1{ margin-top:24px; font-size:clamp(34px,4.6vw,56px); line-height:1.05; font-weight:800; max-width:16ch; }
+  .hero h1 .accent{ color:var(--lavender); }
+  .hero .sub{ margin-top:22px; max-width:56ch; font-size:18px; line-height:1.6; color:rgba(255,255,255,.8); font-weight:400; }
+  .hero .ph{ color:var(--beige); font-weight:600; border-bottom:1px dashed rgba(242,218,172,.6); }
+  .hero-cta{ margin-top:34px; display:flex; flex-wrap:wrap; gap:14px; }
+  .hero-stats{ margin-top:40px; display:flex; gap:34px; flex-wrap:wrap; }
+  .hero-stats .st .n{ font-size:30px; font-weight:800; color:#fff; letter-spacing:-0.02em; }
+  .hero-stats .st .l{ font-size:13px; color:rgba(255,255,255,.65); margin-top:2px; }
+  /* hero photo */
+  .hero-photo{ position:relative; }
+  .hero-photo .frame{ position:relative; border-radius:var(--r-xl); overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,.6); border:1px solid rgba(170,167,242,.25); }
+  .hero-photo .frame img{ width:100%; height:520px; object-fit:cover; object-position:center 20%; }
+  .hero-photo .crm{ position:absolute; left:20px; bottom:20px; display:flex; flex-direction:column; gap:2px; padding:14px 20px; border-radius:var(--r-md); background:rgba(0,0,145,.82); backdrop-filter:blur(6px); border:1px solid rgba(170,167,242,.3); }
+  .hero-photo .crm .name{ font-size:17px; font-weight:700; color:#fff; }
+  .hero-photo .crm .reg{ font-size:12px; font-weight:600; letter-spacing:.08em; color:var(--lavender); }
+  .hero-photo .float-badge{ position:absolute; right:-14px; top:26px; background:var(--beige); color:var(--navy); border-radius:var(--r-md); padding:12px 16px; font-size:13px; font-weight:700; box-shadow:var(--sh-lg); animation:floatY 5s ease-in-out infinite; }
+  .hero-bottom-line{ position:absolute; left:0; right:0; bottom:0; height:1px; background:linear-gradient(90deg, transparent, rgba(170,167,242,.55), transparent); }
+
+  /* ---------- section shell ---------- */
+  section{ padding:0; }
+  .sec{ padding:88px 0; }
+  .sec-head{ max-width:62ch; }
+  .sec-head h2{ margin-top:14px; font-size:clamp(28px,4vw,44px); font-weight:800; line-height:1.06; }
+  .sec-head p{ margin-top:16px; font-size:17px; line-height:1.65; color:rgba(11,11,51,.7); }
+
+  /* ---------- specialties grid ---------- */
+  .grid-spec{ margin-top:44px; display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; }
+  .card{ background:#fff; border-radius:var(--r-lg); border:1px solid rgba(0,0,145,.08); padding:30px 28px; transition:transform .3s ease, box-shadow .3s ease; }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 26px 50px -26px rgba(0,0,145,.55); }
+  .card .ic{ width:56px; height:56px; border-radius:16px; background:var(--offwhite); display:flex; align-items:center; justify-content:center; color:var(--navy); }
+  .card .ic i{ width:28px; height:28px; }
+  .card h4{ margin:22px 0 10px; font-size:18.5px; font-weight:700; line-height:1.25; }
+  .card p{ font-size:14.5px; line-height:1.6; color:rgba(11,11,51,.65); }
+  .card .more{ margin-top:20px; font-size:13px; font-weight:600; color:var(--royal); display:inline-flex; align-items:center; gap:6px; }
+  .card .more i{ width:15px; height:15px; }
+
+  /* ---------- team ---------- */
+  .sec-team{ background:#fff; border-top:1px solid rgba(0,0,145,.08); border-bottom:1px solid rgba(0,0,145,.08); }
+  .grid-team{ margin-top:44px; display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr)); gap:26px; }
+  .doc{ display:grid; grid-template-columns:210px 1fr; background:var(--offwhite); border:1px solid rgba(0,0,145,.08); border-radius:var(--r-xl); overflow:hidden; transition:transform .3s ease, box-shadow .3s ease; }
+  .doc:hover{ transform:translateY(-6px); box-shadow:0 26px 50px -26px rgba(0,0,145,.55); }
+  .doc .photo{ position:relative; }
+  .doc .photo img{ width:100%; height:100%; object-fit:cover; object-position:center top; min-height:300px; }
+  .doc .photo .crm{ position:absolute; left:12px; bottom:12px; padding:6px 12px; border-radius:999px; background:var(--navy); color:#fff; font-size:12px; font-weight:600; }
+  .doc .info{ padding:28px 28px; }
+  .doc .info h4{ font-size:21px; font-weight:700; }
+  .doc .info .role{ margin-top:6px; font-size:13px; font-weight:600; letter-spacing:.04em; color:var(--royal); }
+  .doc .info p{ margin-top:14px; font-size:14px; line-height:1.65; color:rgba(11,11,51,.7); }
+  .team-cta{ margin-top:40px; display:flex; justify-content:center; }
+
+  /* ---------- convenios ---------- */
+  .conv-box{ margin-top:40px; background:#fff; border-radius:var(--r-lg); border:1px solid rgba(0,0,145,.08); padding:34px; display:flex; flex-wrap:wrap; gap:12px; box-shadow:var(--sh-md); }
+  .chip{ padding:11px 20px; border-radius:999px; background:var(--offwhite); border:1px solid rgba(0,0,145,.08); font-size:14px; font-weight:600; color:var(--navy); transition:background .25s ease, transform .25s ease; }
+  .chip:hover{ background:var(--lavender); transform:translateY(-2px); }
+  .conv-note{ margin-top:22px; font-size:14.5px; line-height:1.6; color:rgba(11,11,51,.62); max-width:80ch; }
+  .conv-note strong{ color:var(--navy); }
+
+  /* ---------- contact ---------- */
+  .contact-card{ margin-top:44px; border-radius:var(--r-xl); overflow:hidden; background:var(--navy); color:#fff; display:grid; grid-template-columns:1fr 1fr; box-shadow:var(--sh-lg); }
+  .contact-info{ padding:48px 44px; display:flex; flex-direction:column; gap:26px; }
+  .cline{ display:flex; gap:16px; align-items:flex-start; }
+  .cline .ci{ flex:none; width:44px; height:44px; border-radius:12px; background:rgba(170,167,242,.18); display:flex; align-items:center; justify-content:center; color:var(--lavender); }
+  .cline .ci i{ width:22px; height:22px; }
+  .cline .lab{ font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--lavender); font-weight:600; }
+  .cline .val{ margin-top:6px; font-size:15px; line-height:1.55; color:rgba(255,255,255,.88); }
+  .cline .val a{ color:rgba(255,255,255,.88); }
+  .cline .val a:hover{ color:#fff; }
+  .contact-info .btns{ margin-top:8px; display:flex; flex-wrap:wrap; gap:12px; }
+  .contact-map{ min-height:340px; position:relative; }
+  .contact-map iframe{ width:100%; height:100%; border:0; display:block; filter:saturate(.9); }
+
+  /* ---------- footer ---------- */
+  footer{ background:var(--navy); color:#fff; }
+  footer .wrap.f-main{ padding-top:56px; padding-bottom:36px; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px; }
+  footer .f-logo img{ height:40px; margin-bottom:18px; }
+  footer .f-logo p{ font-size:13.5px; line-height:1.6; color:rgba(255,255,255,.6); max-width:36ch; }
+  footer h5{ font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--lavender); font-weight:600; margin-bottom:16px; }
+  footer .f-col a, footer .f-col span{ display:block; font-size:14px; color:rgba(255,255,255,.72); margin-bottom:10px; }
+  footer .f-col a:hover{ color:#fff; }
+  footer .f-bottom{ border-top:1px solid rgba(255,255,255,.12); }
+  footer .f-bottom .wrap{ padding-top:22px; padding-bottom:26px; display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center; }
+  footer .f-bottom .meta{ font-size:12.5px; color:rgba(255,255,255,.55); line-height:1.6; }
+  footer .f-wave{ line-height:0; opacity:.2; }
+  footer .f-wave svg{ width:100%; height:40px; }
+
+  /* ---------- whatsapp fab ---------- */
+  .fab{ position:fixed; right:24px; bottom:24px; z-index:60; width:60px; height:60px; border-radius:999px; background:var(--wa); display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 10px 30px -6px rgba(37,211,102,.6); animation:pulseRing 2.6s ease-out infinite; }
+  .fab:hover{ color:#fff; transform:scale(1.05); }
+  .fab i{ width:28px; height:28px; }
+
+  /* ---------- reveal ---------- */
+  .rv{ opacity:0; transform:translateY(30px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .rv.on{ opacity:1; transform:none; }
+  .stag>*{ opacity:0; transform:translateY(26px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .stag.on>*{ opacity:1; transform:none; }
+
+  /* ---------- animations ---------- */
+  @keyframes waveMove{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  @keyframes floatY{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
+  @keyframes pulseRing{ 0%{ box-shadow:0 0 0 0 rgba(37,211,102,.55); } 70%{ box-shadow:0 0 0 18px rgba(37,211,102,0); } 100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); } }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; }
+    .rv,.stag>*{ opacity:1 !important; transform:none !important; transition:none !important; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:940px){
+    .hero .wrap{ grid-template-columns:1fr; gap:40px; padding-top:56px; padding-bottom:72px; }
+    .hero-photo{ max-width:460px; }
+    .hero-photo .frame img{ height:440px; }
+    .hero-photo .float-badge{ right:8px; top:14px; font-size:12px; padding:10px 14px; }
+    .contact-card{ grid-template-columns:1fr; }
+    .contact-map{ min-height:300px; }
+    footer .wrap.f-main{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:720px){
+    .wrap{ padding:0 20px; }
+    .navlinks{ display:none; }
+    .menu-btn{ display:inline-flex; }
+    .nav-cta .btn span.hide-sm{ display:none; }
+    .sec{ padding:64px 0; }
+    .doc{ grid-template-columns:1fr; }
+    .doc .photo img{ min-height:320px; max-height:400px; }
+    footer .wrap.f-main{ grid-template-columns:1fr; gap:28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="top">
+  <div class="wrap">
+    <a href="#top" class="brand"><img src="assets/logo/cotlogo-navy.svg" alt="Centro Oftalmológico de Taubaté"></a>
+    <div class="navlinks">
+      <a href="#especialidades">Especialidades</a>
+      <a href="#equipe">Equipe Médica</a>
+      <a href="#convenios">Convênios</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="https://wa.me/5512988537005" target="_blank" rel="noopener">Agendar <span class="hide-sm">Consulta</span> <i data-lucide="arrow-right"></i></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="waves">
+    <div class="track">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 Q90,0 180,40 Q270,80 360,40 Q450,0 540,40 Q630,80 720,40 Q810,0 900,40 Q990,80 1080,40 Q1170,0 1260,40 Q1350,80 1440,40" fill="none" stroke="#AAA7F2" stroke-width="2"/></svg>
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 Q90,0 180,40 Q270,80 360,40 Q450,0 540,40 Q630,80 720,40 Q810,0 900,40 Q990,80 1080,40 Q1170,0 1260,40 Q1350,80 1440,40" fill="none" stroke="#AAA7F2" stroke-width="2"/></svg>
+    </div>
+  </div>
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="hero-text rv">
+      <div class="badge"><span class="dot"></span> Centro Oftalmológico de Taubaté</div>
+      <h1>Excelência e precisão em saúde ocular<span class="accent">.</span></h1>
+      <p class="sub">No Centro Oftalmológico de Taubaté, aliamos experiência consolidada e rigor científico para oferecer diagnósticos precisos e tratamentos de alta complexidade. Recupere sua qualidade de vida com um corpo clínico com mais de <span class="ph">30</span> anos de experiência em oftalmologia.</p>
+      <div class="hero-cta">
+        <a class="btn btn-royal" href="https://wa.me/5512988537005" target="_blank" rel="noopener">Agendar Consulta <i data-lucide="arrow-right"></i></a>
+        <a class="btn btn-light" href="#especialidades">Ver especialidades</a>
+      </div>
+      <div class="hero-stats">
+        <div class="st"><div class="n">2</div><div class="l">Oftalmologistas titulares</div></div>
+        <div class="st"><div class="n">12+</div><div class="l">Convênios atendidos</div></div>
+        <div class="st"><div class="n">Taubaté</div><div class="l">Referência na Região</div></div>
+      </div>
+    </div>
+    <div class="hero-photo rv">
+      <div class="frame">
+        <img src="assets/img/hero-dr-ivo.jpg" alt="Dr. Ivo Rocha, oftalmologista no Centro Oftalmológico de Taubaté">
+        <div class="crm">
+          <span class="name">Dr. Ivo Rocha</span>
+          <span class="reg">CRM 81.810</span>
+        </div>
+      </div>
+      <div class="float-badge">Referência em Taubaté e Região</div>
+    </div>
+  </div>
+  <div class="hero-bottom-line"></div>
+</header>
+
+<main>
+
+<!-- ============ ESPECIALIDADES ============ -->
+<section class="sec wrap" id="especialidades">
+  <div class="sec-head rv">
+    <div class="eyebrow">01 — Especialidades</div>
+    <h2>Cuidado completo para a sua visão</h2>
+    <p>Do diagnóstico de alta precisão aos tratamentos de alta complexidade, reunimos tecnologia de última geração e rigor científico em cada atendimento.</p>
+  </div>
+  <div class="grid-spec stag">
+    <div class="card">
+      <div class="ic"><i data-lucide="scan-eye"></i></div>
+      <h4>Catarata e Lentes Intraoculares</h4>
+      <p>Recupere a acuidade visual e a percepção cromática por meio de procedimentos modernos, seguros e de rápida recuperação, visando a eliminação da opacidade visual.</p>
+    </div>
+    <div class="card">
+      <div class="ic"><i data-lucide="aperture"></i></div>
+      <h4>Lentes de Contato e Ceratocone</h4>
+      <p>Especialização técnica na adaptação de lentes convencionais e esclerais. Protocolos avançados para o manejo do Ceratocone, assegurando conforto e a máxima acuidade visual possível.</p>
+    </div>
+    <div class="card">
+      <div class="ic"><i data-lucide="droplets"></i></div>
+      <h4>Tratamento de Olho Seco</h4>
+      <p>Diagnóstico especializado e protocolos terapêuticos modernos para o tratamento da síndrome do Olho Seco, restaurando a homeostase ocular e aliviando o desconforto crônico.</p>
+    </div>
+    <div class="card">
+      <div class="ic"><i data-lucide="scissors"></i></div>
+      <h4>Cirurgias de Calázio e Pterígio</h4>
+      <p>Intervenções cirúrgicas seguras para a exérese de Calázio e Pterígio, priorizando a integridade da superfície ocular e o restabelecimento estético-funcional.</p>
+    </div>
+    <div class="card">
+      <div class="ic"><i data-lucide="gauge"></i></div>
+      <h4>Glaucoma e Pressão Ocular</h4>
+      <p>Monitoramento preventivo e abordagens terapêuticas avançadas para a preservação do campo visual e o controle da progressão da patologia.</p>
+    </div>
+    <div class="card">
+      <div class="ic"><i data-lucide="microscope"></i></div>
+      <h4>Exames Diagnósticos de Alta Precisão</h4>
+      <p>Check-up oftalmológico completo com tecnologia de última geração: Mapeamento de Retina, Topografia, Campo Visual e PAM (Potencial de Acuidade Visual).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EQUIPE MÉDICA ============ -->
+<section class="sec-team">
+  <div class="sec wrap" id="equipe">
+    <div class="sec-head rv">
+      <div class="eyebrow">02 — Equipe Médica</div>
+      <h2>Um corpo clínico de distinção</h2>
+      <p>Tradição consolidada e inovação tecnológica lado a lado, dedicadas à reabilitação visual e ao cuidado de cada paciente.</p>
+    </div>
+    <div class="grid-team stag">
+      <article class="doc">
+        <div class="photo">
+          <img src="assets/img/dr-ivo-rocha.jpg" alt="Dr. Ivo Rocha">
+          <span class="crm">CRM 81.810</span>
+        </div>
+        <div class="info">
+          <h4>Dr. Ivo Rocha</h4>
+          <div class="role">Oftalmologia · Mestre pela UFRJ</div>
+          <p>Fundamenta o corpo clínico com uma trajetória de distinção e vasta experiência. Formação pela Academia Militar das Agulhas Negras (AMAN, 1987) e Residência Médica no Rio de Janeiro (1989–1991). Mestre em Oftalmologia pela UFRJ, com sólida formação multidisciplinar — graduado em Direito pela Unitau, com Mestrado pela Unisal. Atuou por anos como professor de Oftalmologia na Unitau.</p>
+        </div>
+      </article>
+      <article class="doc">
+        <div class="photo">
+          <img src="assets/img/dr-ivo-rocha-neto.jpg" alt="Dr. Ivo Rocha Neto">
+          <span class="crm">CRM 173.991</span>
+        </div>
+        <div class="info">
+          <h4>Dr. Ivo Rocha Neto</h4>
+          <div class="role">Lentes Esclerais · Ceratocone</div>
+          <p>Integra o corpo clínico com foco em inovação tecnológica e tratamentos especializados. Graduado pelo Centro Universitário São Camilo, com especialização no Hospital Santo Amaro, dedica sua prática ao manejo de patologias complexas. Especialista em adaptação de lentes de contato esclerais e no tratamento avançado do Ceratocone, aplicando as mais modernas técnicas da oftalmologia contemporânea.</p>
+        </div>
+      </article>
+    </div>
+    <div class="team-cta rv">
+      <a class="btn btn-primary" href="https://wa.me/5512988537005" target="_blank" rel="noopener">Agendar Consulta <i data-lucide="arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONVÊNIOS ============ -->
+<section class="sec wrap" id="convenios">
+  <div class="sec-head rv">
+    <div class="eyebrow">03 — Convênios</div>
+    <h2>Convênios atendidos</h2>
+    <p>Trabalhamos com os principais planos de saúde da região para facilitar o seu acesso ao cuidado oftalmológico.</p>
+  </div>
+  <div class="conv-box rv">
+    <span class="chip">Unimed</span>
+    <span class="chip">Amil</span>
+    <span class="chip">Porto Seguro Saúde</span>
+    <span class="chip">Cassi</span>
+    <span class="chip">Geap</span>
+    <span class="chip">Mediservice</span>
+    <span class="chip">Notredame Intermédica</span>
+    <span class="chip">Allianz Saúde</span>
+    <span class="chip">Central Nacional Unimed (CNU)</span>
+    <span class="chip">Economus</span>
+    <span class="chip">Petrobras Saúde</span>
+    <span class="chip">Cabesp</span>
+  </div>
+  <p class="conv-note rv"><strong>Seu convênio não está na lista?</strong> Entre em contato para consultar modalidades de reembolso ou condições para atendimento particular.</p>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="sec wrap" id="contato">
+  <div class="sec-head rv">
+    <div class="eyebrow">04 — Contato e Localização</div>
+    <h2>Venha nos visitar</h2>
+    <p>Estamos no coração de Taubaté, prontos para atendê-lo com toda a estrutura do Centro Oftalmológico.</p>
+  </div>
+  <div class="contact-card rv">
+    <div class="contact-info">
+      <div class="cline">
+        <span class="ci"><i data-lucide="map-pin"></i></span>
+        <div><div class="lab">Endereço</div><div class="val">Avenida Tiradentes, 101 — 8º andar<br>Edifício Torre Di Vitta · Taubaté/SP<br>CEP 12030-180</div></div>
+      </div>
+      <div class="cline">
+        <span class="ci"><i data-lucide="phone"></i></span>
+        <div><div class="lab">Telefones</div><div class="val">Fixo <a href="tel:+551236335666">(12) 3633-5666</a><br>WhatsApp <a href="https://wa.me/5512988537005" target="_blank" rel="noopener">(12) 98853-7005</a></div></div>
+      </div>
+      <div class="cline">
+        <span class="ci"><i data-lucide="clock"></i></span>
+        <div><div class="lab">Horário de atendimento</div><div class="val">Segunda a Sexta · 08h às 18h<br>Sábado · 08h às 12h</div></div>
+      </div>
+      <div class="btns">
+        <a class="btn btn-wa" href="https://wa.me/5512988537005" target="_blank" rel="noopener"><i data-lucide="message-circle"></i> Falar no WhatsApp</a>
+      </div>
+    </div>
+    <div class="contact-map">
+      <iframe title="Mapa - Centro Oftalmológico de Taubaté" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Avenida+Tiradentes+101+Torre+Di+Vitta+Taubat%C3%A9+SP&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap f-main">
+    <div class="f-logo">
+      <img src="assets/logo/cotlogo-white.svg" alt="Centro Oftalmológico de Taubaté">
+      <p>Excelência e precisão em saúde ocular. Referência em Taubaté e Região.</p>
+    </div>
+    <div class="f-col">
+      <h5>Navegação</h5>
+      <a href="#especialidades">Especialidades</a>
+      <a href="#equipe">Equipe Médica</a>
+      <a href="#convenios">Convênios</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <div class="f-col">
+      <h5>Contato</h5>
+      <a href="tel:+551236335666">(12) 3633-5666</a>
+      <a href="https://wa.me/5512988537005" target="_blank" rel="noopener">(12) 98853-7005</a>
+      <span>Av. Tiradentes, 101 — 8º andar<br>Taubaté/SP · CEP 12030-180</span>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <div class="meta">Centro Oftalmológico de Taubaté · CNPJ <span class="ph-cnpj">00.000.000/0001-00</span></div>
+      <div class="meta"><a href="#" style="color:rgba(255,255,255,.75);">Política de Privacidade</a></div>
+    </div>
+  </div>
+  <div class="f-wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 Q90,0 180,30 Q270,60 360,30 Q450,0 540,30 Q630,60 720,30 Q810,0 900,30 Q990,60 1080,30 Q1170,0 1260,30 Q1350,60 1440,30" fill="none" stroke="#AAA7F2" stroke-width="2"/></svg></div>
+</footer>
+
+<!-- ============ WHATSAPP FAB ============ -->
+<a class="fab" href="https://wa.me/5512988537005" target="_blank" rel="noopener" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+
+<script>
+  // Lucide icons (retry as stream settles)
+  (function(){
+    var tries = 0;
+    function tick(){ if (window.lucide && window.lucide.createIcons){ try{ window.lucide.createIcons(); }catch(e){} } if(++tries < 6) setTimeout(tick, 250); }
+    tick();
+  })();
+
+  // Scroll reveal
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var targets = document.querySelectorAll('.rv, .stag');
+    if (reduce || !('IntersectionObserver' in window)){
+      targets.forEach(function(t){ t.classList.add('on'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){
+          var el = en.target;
+          el.classList.add('on');
+          if (el.classList.contains('stag')){
+            Array.prototype.forEach.call(el.children, function(k, ci){ k.style.transitionDelay = (ci*70) + 'ms'; });
+          }
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    targets.forEach(function(t){ io.observe(t); });
+  })();
+</script>
+</body>
+</html>
