@@ -21,7 +21,8 @@
   }
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
-  html,body{ overflow-x:hidden; max-width:100%; }
+  html,body{ max-width:100%; }
+  body{ overflow-x:clip; }
   body{ margin:0; background:var(--offwhite); color:var(--ink); font-family:'Montserrat',system-ui,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.5; }
   h1,h2,h3,h4{ margin:0; letter-spacing:-0.02em; }
   p{ margin:0; }
@@ -34,31 +35,62 @@
   .eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--royal); }
 
   /* ---------- buttons ---------- */
-  .btn{ border:none; cursor:pointer; font-family:inherit; padding:15px 26px; border-radius:999px; font-size:15px; font-weight:600; display:inline-flex; align-items:center; gap:10px; transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease; }
-  .btn i{ width:17px; height:17px; }
-  .btn-primary{ background:var(--navy); color:var(--white); }
-  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 26px -12px rgba(0,0,145,.6); color:#fff; }
-  .btn-royal{ background:var(--royal); color:var(--white); }
-  .btn-royal:hover{ transform:translateY(-2px); box-shadow:0 14px 26px -12px rgba(95,91,217,.7); color:#fff; }
-  .btn-outline{ background:transparent; color:var(--navy); border:1.5px solid var(--navy); }
-  .btn-outline:hover{ background:var(--navy); color:#fff; transform:translateY(-2px); }
-  .btn-light{ background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.25); }
-  .btn-light:hover{ background:rgba(255,255,255,.2); color:#fff; transform:translateY(-2px); }
-  .btn-wa{ background:var(--wa); color:#06331b; font-weight:700; }
-  .btn-wa:hover{ transform:translateY(-2px) scale(1.02); color:#06331b; }
+  .btn{ position:relative; overflow:hidden; isolation:isolate; border:none; cursor:pointer; font-family:inherit; padding:15px 26px; border-radius:999px; font-size:15px; font-weight:600; letter-spacing:.005em; text-decoration:none; -webkit-tap-highlight-color:transparent; display:inline-flex; align-items:center; gap:10px; transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s cubic-bezier(.2,.7,.2,1), background .3s ease, color .3s ease, border-color .3s ease; }
+  .btn i,.btn svg{ width:17px; height:17px; flex:none; transition:transform .3s cubic-bezier(.2,.7,.2,1); }
+  .btn:active{ transform:translateY(0) scale(.975); }
+  .btn:focus-visible{ outline:none; box-shadow:0 0 0 3px rgba(255,255,255,.7), 0 0 0 6px rgba(95,91,217,.55); }
+  /* passing shine on filled buttons */
+  .btn-primary::before,.btn-royal::before,.btn-wa::before{ content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(115deg, transparent 22%, rgba(255,255,255,.32) 50%, transparent 78%); transform:translateX(-135%) skewX(-16deg); transition:transform .75s cubic-bezier(.2,.7,.2,1); }
+  .btn-primary:hover::before,.btn-royal:hover::before,.btn-wa:hover::before{ transform:translateX(135%) skewX(-16deg); }
+  /* arrow nudge */
+  .btn:hover i[data-lucide="arrow-right"],.btn:hover svg.lucide-arrow-right{ transform:translateX(4px); }
+  .btn-primary{ background:linear-gradient(135deg,#1414a8 0%,#000091 62%); color:var(--white); box-shadow:0 10px 24px -14px rgba(0,0,145,.7); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 20px 38px -16px rgba(0,0,145,.75); color:#fff; }
+  .btn-royal{ background:linear-gradient(135deg,#7C79EE 0%,#5F5BD9 62%); color:var(--white); box-shadow:0 10px 24px -14px rgba(95,91,217,.75); }
+  .btn-royal:hover{ transform:translateY(-2px); box-shadow:0 20px 38px -16px rgba(95,91,217,.85); color:#fff; }
+  .btn-outline{ background:transparent; color:var(--navy); border:1.5px solid rgba(0,0,145,.55); }
+  .btn-outline:hover{ background:var(--navy); color:#fff; border-color:var(--navy); transform:translateY(-2px); box-shadow:0 16px 30px -16px rgba(0,0,145,.55); }
+  .btn-light{ background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.28); backdrop-filter:blur(4px); }
+  .btn-light:hover{ background:rgba(255,255,255,.22); color:#fff; border-color:rgba(255,255,255,.55); transform:translateY(-2px); }
+  .btn-wa{ background:linear-gradient(135deg,#33E276 0%,#25D366 62%); color:#06331b; font-weight:700; box-shadow:0 10px 24px -14px rgba(37,211,102,.7); }
+  .btn-wa:hover{ transform:translateY(-2px) scale(1.02); color:#06331b; box-shadow:0 20px 38px -16px rgba(37,211,102,.8); }
+  .btn-sm{ padding:11px 20px; font-size:14px; }
 
-  /* ---------- nav ---------- */
-  nav.top{ position:sticky; top:0; z-index:50; background:rgba(242,242,242,.82); backdrop-filter:blur(14px); border-bottom:1px solid rgba(0,0,145,.10); }
-  nav.top .wrap{ display:flex; align-items:center; justify-content:space-between; gap:24px; padding-top:14px; padding-bottom:14px; }
-  nav.top a.brand{ display:flex; align-items:center; gap:12px; }
-  nav.top a.brand img{ height:34px; }
-  .navlinks{ display:flex; align-items:center; gap:26px; font-size:14px; font-weight:500; }
-  .navlinks a{ color:var(--ink); position:relative; }
-  .navlinks a::after{ content:""; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:currentColor; transition:width .3s ease; }
-  .navlinks a:hover{ color:var(--navy); }
-  .navlinks a:hover::after{ width:100%; }
-  .nav-cta{ display:flex; align-items:center; gap:14px; }
-  .menu-btn{ display:none; background:none; border:none; cursor:pointer; color:var(--navy); }
+  /* ---------- nav (floating, morphs on scroll) ---------- */
+  .nav-shell{ position:sticky; top:0; z-index:50; padding:0; transition:padding .5s cubic-bezier(.2,.7,.2,1); }
+  .nav-bar{ max-width:var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:24px;
+    padding:16px 32px; border:1px solid transparent; border-bottom-color:rgba(0,0,145,.10);
+    background:rgba(242,242,242,.78); backdrop-filter:blur(14px) saturate(1.3); -webkit-backdrop-filter:blur(14px) saturate(1.3);
+    border-radius:0; box-shadow:0 0 0 rgba(0,0,145,0);
+    transition:max-width .5s cubic-bezier(.2,.7,.2,1), padding .5s cubic-bezier(.2,.7,.2,1), border-radius .55s cubic-bezier(.2,.7,.2,1), background .45s ease, box-shadow .45s ease, border-color .45s ease; }
+  .nav-shell.scrolled{ padding:12px 16px; }
+  .nav-shell.scrolled .nav-bar{ max-width:1120px; padding:9px 12px 9px 24px; border-radius:999px;
+    background:rgba(255,255,255,.72); border-color:rgba(0,0,145,.10);
+    box-shadow:0 22px 48px -26px rgba(0,0,145,.55), 0 3px 10px -4px rgba(0,0,145,.12); }
+  .brand{ display:flex; align-items:center; gap:12px; transition:opacity .3s ease, transform .3s ease; }
+  .brand img{ height:34px; transition:height .5s cubic-bezier(.2,.7,.2,1); }
+  .nav-shell.scrolled .brand img{ height:30px; }
+  .brand:hover{ opacity:.72; }
+  .brand:active{ transform:scale(.97); }
+  .navlinks{ display:flex; align-items:center; gap:4px; font-size:14px; font-weight:500; }
+  .navlinks a{ color:var(--ink); position:relative; padding:9px 15px; border-radius:999px; transition:color .25s ease, background .25s ease; }
+  .navlinks a::after{ content:""; position:absolute; left:15px; right:15px; bottom:6px; height:2px; border-radius:2px; background:var(--royal); transform:scaleX(0); transform-origin:center; transition:transform .32s cubic-bezier(.2,.7,.2,1); }
+  .navlinks a:hover{ color:var(--navy); background:rgba(0,0,145,.05); }
+  .navlinks a:hover::after,.navlinks a.active::after{ transform:scaleX(1); }
+  .navlinks a.active{ color:var(--navy); }
+  .nav-cta{ display:flex; align-items:center; gap:12px; }
+  .menu-btn{ display:none; align-items:center; justify-content:center; width:44px; height:44px; background:transparent; border:1px solid rgba(0,0,145,.15); border-radius:14px; cursor:pointer; color:var(--navy); transition:background .25s ease, border-color .25s ease, transform .25s ease; }
+  .menu-btn:hover{ background:rgba(0,0,145,.06); border-color:rgba(0,0,145,.28); }
+  .menu-btn:active{ transform:scale(.94); }
+  .menu-btn i,.menu-btn svg{ width:22px; height:22px; }
+  /* mobile dropdown */
+  .mobile-menu{ max-width:var(--max); margin:0 auto; overflow:hidden; max-height:0; opacity:0; transition:max-height .45s cubic-bezier(.2,.7,.2,1), opacity .3s ease, margin-top .3s ease; }
+  .mobile-menu.open{ max-height:360px; opacity:1; margin-top:10px; }
+  .mobile-menu .mm-inner{ background:rgba(255,255,255,.92); backdrop-filter:blur(14px); border:1px solid rgba(0,0,145,.10); border-radius:22px; padding:12px; display:flex; flex-direction:column; gap:4px; box-shadow:var(--sh-md); }
+  .mobile-menu a.mlink{ padding:15px 16px; border-radius:14px; font-size:16px; font-weight:600; color:var(--ink); display:flex; align-items:center; justify-content:space-between; transition:background .2s ease, color .2s ease; }
+  .mobile-menu a.mlink i,.mobile-menu a.mlink svg{ width:18px; height:18px; color:var(--royal); }
+  .mobile-menu a.mlink:hover,.mobile-menu a.mlink:active{ background:rgba(0,0,145,.05); color:var(--navy); }
+  .mobile-menu .mm-cta{ margin-top:6px; }
 
   /* ---------- hero ---------- */
   header.hero{ position:relative; background:var(--navy); color:#fff; overflow:hidden; }
@@ -66,26 +98,54 @@
   .hero .waves .track{ display:flex; width:200%; animation:waveMove 22s linear infinite; }
   .hero .waves svg{ width:50%; height:230px; }
   .hero .glow{ position:absolute; right:-140px; top:40px; width:460px; height:460px; border-radius:999px; background:radial-gradient(circle at 30% 30%, rgba(95,91,217,.55), transparent 62%); filter:blur(10px); pointer-events:none; }
-  .hero .wrap{ position:relative; display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; padding-top:72px; padding-bottom:96px; }
-  .badge{ display:inline-flex; align-items:center; gap:10px; padding:7px 15px; border:1px solid rgba(170,167,242,.4); border-radius:999px; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--lavender); }
-  .badge .dot{ width:7px; height:7px; border-radius:999px; background:var(--lavender); }
-  .hero h1{ margin-top:24px; font-size:clamp(34px,4.6vw,56px); line-height:1.05; font-weight:800; max-width:16ch; }
+  .hero .wrap{ position:relative; display:grid; grid-template-columns:1.12fr 0.88fr; gap:40px; align-items:center; padding-top:72px; padding-bottom:96px; }
+  .badge{ display:inline-flex; align-items:center; gap:10px; padding:7px 15px; border:1px solid rgba(170,167,242,.4); border-radius:999px; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--lavender); background:rgba(170,167,242,.06); }
+  .badge .dot{ width:7px; height:7px; border-radius:999px; background:var(--lavender); box-shadow:0 0 0 0 rgba(170,167,242,.6); animation:pulseDot 2.4s ease-out infinite; }
+  .hero h1{ margin-top:24px; font-size:clamp(34px,4.6vw,56px); line-height:1.05; font-weight:800; max-width:15ch; }
   .hero h1 .accent{ color:var(--lavender); }
-  .hero .sub{ margin-top:22px; max-width:56ch; font-size:18px; line-height:1.6; color:rgba(255,255,255,.8); font-weight:400; }
+  .hero .sub{ margin-top:22px; max-width:52ch; font-size:18px; line-height:1.6; color:rgba(255,255,255,.8); font-weight:400; }
   .hero .ph{ color:var(--beige); font-weight:600; border-bottom:1px dashed rgba(242,218,172,.6); }
   .hero-cta{ margin-top:34px; display:flex; flex-wrap:wrap; gap:14px; }
-  .hero-stats{ margin-top:40px; display:flex; gap:34px; flex-wrap:wrap; }
+  .hero-stats{ margin-top:40px; display:flex; gap:0; flex-wrap:wrap; }
+  .hero-stats .st{ padding-right:26px; margin-right:26px; border-right:1px solid rgba(255,255,255,.14); }
+  .hero-stats .st:last-child{ border-right:none; margin-right:0; padding-right:0; }
   .hero-stats .st .n{ font-size:30px; font-weight:800; color:#fff; letter-spacing:-0.02em; }
   .hero-stats .st .l{ font-size:13px; color:rgba(255,255,255,.65); margin-top:2px; }
-  /* hero photo */
-  .hero-photo{ position:relative; }
-  .hero-photo .frame{ position:relative; border-radius:var(--r-xl); overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,.6); border:1px solid rgba(170,167,242,.25); }
-  .hero-photo .frame img{ width:100%; height:520px; object-fit:cover; object-position:center 20%; }
-  .hero-photo .crm{ position:absolute; left:20px; bottom:20px; display:flex; flex-direction:column; gap:2px; padding:14px 20px; border-radius:var(--r-md); background:rgba(0,0,145,.82); backdrop-filter:blur(6px); border:1px solid rgba(170,167,242,.3); }
-  .hero-photo .crm .name{ font-size:17px; font-weight:700; color:#fff; }
-  .hero-photo .crm .reg{ font-size:12px; font-weight:600; letter-spacing:.08em; color:var(--lavender); }
-  .hero-photo .float-badge{ position:absolute; right:-14px; top:26px; background:var(--beige); color:var(--navy); border-radius:var(--r-md); padding:12px 16px; font-size:13px; font-weight:700; box-shadow:var(--sh-lg); animation:floatY 5s ease-in-out infinite; }
+
+  /* hero visual — two-doctor duo */
+  .hero-visual{ position:relative; }
+  .duo-cap{ display:inline-flex; align-items:center; gap:9px; margin:0 0 16px 4px; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--lavender); }
+  .duo-cap .ln{ width:26px; height:1px; background:linear-gradient(90deg, var(--lavender), transparent); }
+  .hero-duo{ position:relative; height:clamp(488px,42vw,560px); transform:translate3d(0,0,0); transition:transform .5s cubic-bezier(.2,.7,.2,1); }
+  .hero-duo::before{ content:""; position:absolute; inset:-8% -6% 2% -6%; z-index:0; background:radial-gradient(58% 55% at 52% 42%, rgba(95,91,217,.45), transparent 72%); filter:blur(24px); pointer-events:none; }
+  .doc-card{ position:absolute; border-radius:var(--r-xl); overflow:hidden; border:1px solid rgba(170,167,242,.22); background:#0a0a6e; transition:box-shadow .45s ease, border-color .45s ease; }
+  .doc-card img{ width:100%; height:100%; object-fit:cover; object-position:center 12%; display:block; transition:transform .7s cubic-bezier(.2,.7,.2,1); }
+  .doc-card.lg{ left:0; top:0; width:64%; height:86%; z-index:1; box-shadow:0 40px 76px -28px rgba(0,0,0,.72); }
+  .doc-card.lg img{ object-position:42% 12%; }
+  .doc-card.sm{ right:-7%; bottom:0; width:43%; height:70%; z-index:2; border-color:rgba(255,255,255,.16); box-shadow:0 44px 88px -24px rgba(0,0,0,.88); }
+  .doc-card:hover{ z-index:3; border-color:rgba(170,167,242,.6); }
+  .doc-card.lg:hover{ box-shadow:0 54px 96px -26px rgba(0,0,0,.82); }
+  .doc-card.sm:hover{ box-shadow:0 58px 104px -24px rgba(0,0,0,.9); }
+  .doc-card:hover img{ transform:scale(1.05); }
+  .doc-card .tag{ position:absolute; top:14px; left:14px; z-index:2; padding:7px 13px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; background:rgba(0,0,60,.5); color:var(--lavender); backdrop-filter:blur(6px); border:1px solid rgba(170,167,242,.3); }
+  .doc-card .scrim{ position:absolute; left:0; right:0; bottom:0; padding:52px 20px 20px; background:linear-gradient(to top, rgba(0,0,70,.96), rgba(0,0,70,.6) 50%, transparent); }
+  .doc-card .dname{ font-size:19px; font-weight:700; color:#fff; line-height:1.2; }
+  .doc-card .dcrm{ margin-top:4px; font-size:13px; font-weight:600; letter-spacing:.06em; color:var(--lavender); }
+  .doc-card .drole{ margin-top:10px; display:inline-flex; align-items:center; gap:7px; font-size:12px; color:rgba(255,255,255,.78); line-height:1.3; }
+  .doc-card .drole i,.doc-card .drole svg{ width:13px; height:13px; color:var(--beige); flex:none; }
+  .doc-card.lg .drole{ display:none; }  /* big back card: front card overlaps its lower-right, so keep caption short */
+  .duo-badge{ position:absolute; left:50%; bottom:-18px; transform:translate(-50%,0); z-index:4; display:inline-flex; align-items:center; gap:7px; background:var(--beige); color:var(--navy); border-radius:999px; padding:9px 16px; font-size:12px; font-weight:700; box-shadow:var(--sh-lg); animation:floatBadge 5.5s ease-in-out infinite; }
+  .duo-badge i,.duo-badge svg{ width:15px; height:15px; }
   .hero-bottom-line{ position:absolute; left:0; right:0; bottom:0; height:1px; background:linear-gradient(90deg, transparent, rgba(170,167,242,.55), transparent); }
+
+  /* hero entrance (only when JS active) */
+  html.js .hero .anim{ opacity:0; transform:translateY(22px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); transition-delay:calc(var(--d,0) * 85ms); }
+  html.js .hero .anim.pop{ transform:translateY(28px) scale(.955); }
+  html.js .hero.is-loaded .anim{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){
+    html.js .hero .anim{ opacity:1 !important; transform:none !important; transition:none !important; }
+    .duo-badge,.badge .dot{ animation:none !important; }
+  }
 
   /* ---------- section shell ---------- */
   section{ padding:0; }
@@ -104,6 +164,46 @@
   .card p{ font-size:14.5px; line-height:1.6; color:rgba(11,11,51,.65); }
   .card .more{ margin-top:20px; font-size:13px; font-weight:600; color:var(--royal); display:inline-flex; align-items:center; gap:6px; }
   .card .more i{ width:15px; height:15px; }
+
+  /* ---------- especialidades (interactive: sticky panel + cards) ---------- */
+  .spec-layout{ margin-top:44px; display:grid; grid-template-columns:0.92fr 1.32fr; gap:30px; align-items:start; }
+  .spec-aside{ position:sticky; top:100px; }
+  .spec-panel{ position:relative; overflow:hidden; border-radius:26px; background:linear-gradient(158deg,#0d0da6 0%,#000091 68%); color:#fff; padding:32px 30px; box-shadow:var(--sh-lg); }
+  .spec-panel .sp-waves{ position:absolute; inset:-12% -6% auto -6%; opacity:.13; pointer-events:none; }
+  .spec-panel .sp-waves .track{ display:flex; width:200%; animation:waveMove 20s linear infinite; }
+  .spec-panel .sp-waves svg{ width:50%; height:180px; }
+  .spec-panel .sp-glow{ position:absolute; right:-90px; bottom:-90px; width:300px; height:300px; border-radius:999px; background:radial-gradient(circle at 40% 40%, rgba(95,91,217,.5), transparent 62%); filter:blur(10px); pointer-events:none; }
+  .sp-content{ position:relative; z-index:1; }
+  .sp-content .eyebrow{ color:var(--lavender); }
+  .sp-title{ margin-top:12px; font-size:clamp(23px,2.3vw,30px); font-weight:800; line-height:1.1; }
+  .sp-text{ margin-top:14px; font-size:15px; line-height:1.6; color:rgba(255,255,255,.78); }
+  .sp-photo{ position:relative; margin-top:22px; border-radius:18px; overflow:hidden; border:1px solid rgba(170,167,242,.25); box-shadow:0 24px 50px -26px rgba(0,0,0,.6); }
+  .sp-photo img{ width:100%; height:236px; object-fit:cover; object-position:center 28%; display:block; transition:transform .8s cubic-bezier(.2,.7,.2,1); }
+  .spec-panel:hover .sp-photo img{ transform:scale(1.05); }
+  .sp-scan{ position:absolute; left:0; right:0; top:0; height:2px; background:linear-gradient(90deg, transparent, rgba(170,167,242,.95), transparent); box-shadow:0 0 12px 2px rgba(170,167,242,.55); animation:scanY 5s ease-in-out infinite; }
+  .sp-cap{ position:absolute; left:12px; bottom:12px; display:inline-flex; align-items:center; gap:7px; padding:7px 13px; border-radius:999px; background:rgba(0,0,60,.5); backdrop-filter:blur(6px); border:1px solid rgba(170,167,242,.3); font-size:11.5px; font-weight:600; color:#fff; }
+  .sp-cap i,.sp-cap svg{ width:14px; height:14px; color:var(--beige); }
+  .sp-cta{ margin-top:22px; width:100%; justify-content:center; }
+
+  .spec-cards{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .spec-card{ position:relative; overflow:hidden; display:flex; flex-direction:column; background:#fff; border-radius:20px; border:1px solid rgba(0,0,145,.08); padding:26px 24px 22px; cursor:pointer; color:var(--ink); transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .35s ease; }
+  .spec-card:hover{ transform:translateY(-6px); box-shadow:0 30px 56px -28px rgba(0,0,145,.5); border-color:rgba(95,91,217,.4); }
+  .spec-card:focus-visible{ outline:none; box-shadow:0 0 0 3px rgba(95,91,217,.5); }
+  .sc-top{ position:absolute; top:0; left:0; height:3px; width:0; background:linear-gradient(90deg,var(--royal),var(--lavender)); transition:width .45s cubic-bezier(.2,.7,.2,1); }
+  .spec-card:hover .sc-top,.spec-card:focus-visible .sc-top{ width:100%; }
+  .sc-num{ position:absolute; top:22px; right:22px; font-family:'JetBrains Mono',monospace; font-size:12px; color:rgba(0,0,145,.24); transition:color .35s ease; }
+  .spec-card:hover .sc-num{ color:var(--royal); }
+  .spec-card .ic{ width:54px; height:54px; border-radius:15px; background:var(--offwhite); display:flex; align-items:center; justify-content:center; color:var(--navy); transition:background .35s ease, color .35s ease, transform .45s cubic-bezier(.2,.7,.2,1); }
+  .spec-card .ic i,.spec-card .ic svg{ width:27px; height:27px; }
+  .spec-card:hover .ic{ background:var(--navy); color:#fff; transform:rotate(-6deg) scale(1.06); }
+  .spec-card h4{ margin:20px 0 9px; font-size:17.5px; font-weight:700; line-height:1.25; }
+  .spec-card p{ font-size:14px; line-height:1.58; color:rgba(11,11,51,.65); flex:1 0 auto; }
+  .sc-more{ margin-top:18px; display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--royal); opacity:0; transform:translateY(6px); transition:opacity .35s ease, transform .35s ease, gap .3s ease; }
+  .sc-more i,.sc-more svg{ width:15px; height:15px; }
+  .spec-card:hover .sc-more,.spec-card:focus-visible .sc-more{ opacity:1; transform:none; gap:9px; }
+  .sc-wave{ position:absolute; left:0; right:0; bottom:0; height:44px; opacity:0; transform:translateY(10px); transition:opacity .4s ease, transform .4s ease; pointer-events:none; }
+  .spec-card:hover .sc-wave{ opacity:.45; transform:none; }
+  .sc-wave svg{ width:100%; height:100%; }
 
   /* ---------- team ---------- */
   .sec-team{ background:#fff; border-top:1px solid rgba(0,0,145,.08); border-bottom:1px solid rgba(0,0,145,.08); }
@@ -169,6 +269,9 @@
   @keyframes waveMove{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
   @keyframes floatY{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
   @keyframes pulseRing{ 0%{ box-shadow:0 0 0 0 rgba(37,211,102,.55); } 70%{ box-shadow:0 0 0 18px rgba(37,211,102,0); } 100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); } }
+  @keyframes pulseDot{ 0%{ box-shadow:0 0 0 0 rgba(170,167,242,.6); } 70%{ box-shadow:0 0 0 8px rgba(170,167,242,0); } 100%{ box-shadow:0 0 0 0 rgba(170,167,242,0); } }
+  @keyframes floatBadge{ 0%,100%{ transform:translate(-50%,0); } 50%{ transform:translate(-50%,-8px); } }
+  @keyframes scanY{ 0%{ top:0; opacity:0; } 12%{ opacity:1; } 50%{ top:calc(100% - 2px); opacity:1; } 62%{ opacity:0; } 100%{ top:0; opacity:0; } }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation:none !important; }
@@ -177,10 +280,20 @@
 
   /* ---------- responsive ---------- */
   @media (max-width:940px){
-    .hero .wrap{ grid-template-columns:1fr; gap:40px; padding-top:56px; padding-bottom:72px; }
-    .hero-photo{ max-width:460px; }
-    .hero-photo .frame img{ height:440px; }
-    .hero-photo .float-badge{ right:8px; top:14px; font-size:12px; padding:10px 14px; }
+    .hero .wrap{ grid-template-columns:1fr; gap:40px; padding-top:52px; padding-bottom:80px; }
+    .hero-visual{ width:100%; max-width:720px; margin:0 auto; }
+    .duo-cap{ margin-bottom:14px; }
+    .hero-duo{ display:grid; grid-template-columns:1fr 1fr; align-items:end; gap:18px; height:auto; }
+    .doc-card,.doc-card.lg,.doc-card.sm{ position:relative; width:100%; inset:auto; }
+    .doc-card.lg{ height:auto; align-self:start; }
+    .doc-card.sm{ height:auto; margin-top:48px; box-shadow:0 34px 66px -28px rgba(0,0,0,.72); }
+    .doc-card img{ height:clamp(360px,52vw,440px); object-position:center 12%; }
+    .doc-card.lg img{ object-position:42% 12%; }
+    .doc-card .drole,.doc-card.lg .drole{ display:inline-flex; }
+    .duo-badge{ bottom:-22px; }
+    .spec-layout{ grid-template-columns:1fr; gap:24px; }
+    .spec-aside{ position:static; }
+    .sp-photo img{ height:clamp(220px,34vw,300px); }
     .contact-card{ grid-template-columns:1fr; }
     .contact-map{ min-height:300px; }
     footer .wrap.f-main{ grid-template-columns:1fr 1fr; }
@@ -190,7 +303,22 @@
     .navlinks{ display:none; }
     .menu-btn{ display:inline-flex; }
     .nav-cta .btn span.hide-sm{ display:none; }
+    .nav-bar{ padding:12px 16px; }
+    .nav-shell.scrolled .nav-bar{ padding:8px 10px 8px 18px; }
     .sec{ padding:64px 0; }
+    /* stack the two doctors full-width — no overlap on phones */
+    .hero-visual{ max-width:430px; margin:0 auto; }
+    .hero-duo{ display:block; height:auto; }
+    .doc-card,.doc-card.lg,.doc-card.sm{ position:relative; width:100%; height:auto; inset:auto; }
+    .doc-card img{ height:clamp(320px,74vw,400px); object-position:center 12%; }
+    .doc-card.lg img{ object-position:42% 12%; }
+    .doc-card.sm{ margin-top:18px; box-shadow:0 34px 66px -28px rgba(0,0,0,.72); }
+    .doc-card .drole,.doc-card.lg .drole{ display:inline-flex; }
+    .doc-card .scrim{ padding:48px 18px 18px; }
+    .duo-badge{ position:static; display:flex; width:max-content; margin:16px auto 0; transform:none; animation:floatY 5.5s ease-in-out infinite; }
+    .hero-stats .st{ padding-right:18px; margin-right:18px; }
+    .spec-cards{ grid-template-columns:1fr; }
+    .sc-more{ opacity:1; transform:none; }
     .doc{ grid-template-columns:1fr; }
     .doc .photo img{ min-height:320px; max-height:400px; }
     footer .wrap.f-main{ grid-template-columns:1fr; gap:28px; }
@@ -198,11 +326,12 @@
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js');</script>
 
 <!-- ============ NAV ============ -->
-<nav class="top">
-  <div class="wrap">
-    <a href="#top" class="brand"><img src="assets/logo/cotlogo-navy.svg" alt="Centro Oftalmológico de Taubaté"></a>
+<div class="nav-shell" id="navShell">
+  <nav class="nav-bar" aria-label="Navegação principal">
+    <a href="#top" class="brand" aria-label="Centro Oftalmológico de Taubaté — início"><img src="assets/logo/cotlogo-navy.svg" alt="Centro Oftalmológico de Taubaté"></a>
     <div class="navlinks">
       <a href="#especialidades">Especialidades</a>
       <a href="#equipe">Equipe Médica</a>
@@ -210,10 +339,20 @@
       <a href="#contato">Contato</a>
     </div>
     <div class="nav-cta">
-      <a class="btn btn-primary" href="https://wa.me/5512988537005" target="_blank" rel="noopener">Agendar <span class="hide-sm">Consulta</span> <i data-lucide="arrow-right"></i></a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5512988537005" target="_blank" rel="noopener">Agendar <span class="hide-sm">Consulta</span> <i data-lucide="arrow-right"></i></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu"><i data-lucide="menu"></i></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mm-inner">
+      <a class="mlink" href="#especialidades">Especialidades <i data-lucide="chevron-right"></i></a>
+      <a class="mlink" href="#equipe">Equipe Médica <i data-lucide="chevron-right"></i></a>
+      <a class="mlink" href="#convenios">Convênios <i data-lucide="chevron-right"></i></a>
+      <a class="mlink" href="#contato">Contato <i data-lucide="chevron-right"></i></a>
+      <a class="btn btn-royal mm-cta" href="https://wa.me/5512988537005" target="_blank" rel="noopener">Agendar Consulta <i data-lucide="arrow-right"></i></a>
     </div>
   </div>
-</nav>
+</div>
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
@@ -225,29 +364,43 @@
   </div>
   <div class="glow"></div>
   <div class="wrap">
-    <div class="hero-text rv">
-      <div class="badge"><span class="dot"></span> Centro Oftalmológico de Taubaté</div>
-      <h1>Excelência e precisão em saúde ocular<span class="accent">.</span></h1>
-      <p class="sub">No Centro Oftalmológico de Taubaté, aliamos experiência consolidada e rigor científico para oferecer diagnósticos precisos e tratamentos de alta complexidade. Recupere sua qualidade de vida com um corpo clínico com mais de <span class="ph">30</span> anos de experiência em oftalmologia.</p>
-      <div class="hero-cta">
+    <div class="hero-text">
+      <div class="badge anim" style="--d:0"><span class="dot"></span> Centro Oftalmológico de Taubaté</div>
+      <h1 class="anim" style="--d:1">Excelência e precisão em saúde ocular<span class="accent">.</span></h1>
+      <p class="sub anim" style="--d:2">No Centro Oftalmológico de Taubaté, aliamos experiência consolidada e rigor científico para oferecer diagnósticos precisos e tratamentos de alta complexidade. Recupere sua qualidade de vida com um corpo clínico com mais de <span class="ph">30</span> anos de experiência em oftalmologia.</p>
+      <div class="hero-cta anim" style="--d:3">
         <a class="btn btn-royal" href="https://wa.me/5512988537005" target="_blank" rel="noopener">Agendar Consulta <i data-lucide="arrow-right"></i></a>
         <a class="btn btn-light" href="#especialidades">Ver especialidades</a>
       </div>
-      <div class="hero-stats">
+      <div class="hero-stats anim" style="--d:4">
         <div class="st"><div class="n">2</div><div class="l">Oftalmologistas titulares</div></div>
         <div class="st"><div class="n">12+</div><div class="l">Convênios atendidos</div></div>
         <div class="st"><div class="n">Taubaté</div><div class="l">Referência na Região</div></div>
       </div>
     </div>
-    <div class="hero-photo rv">
-      <div class="frame">
-        <img src="assets/img/hero-dr-ivo.jpg" alt="Dr. Ivo Rocha, oftalmologista no Centro Oftalmológico de Taubaté">
-        <div class="crm">
-          <span class="name">Dr. Ivo Rocha</span>
-          <span class="reg">CRM 81.810</span>
-        </div>
+    <div class="hero-visual">
+      <div class="duo-cap anim" style="--d:3"><span class="ln"></span> Corpo clínico</div>
+      <div class="hero-duo" id="heroDuo">
+        <figure class="doc-card lg anim pop" style="--d:4">
+          <span class="tag">Fundador</span>
+          <img src="assets/img/dr-ivo-rocha.jpg" alt="Dr. Ivo Rocha, oftalmologista">
+          <figcaption class="scrim">
+            <div class="dname">Dr. Ivo Rocha</div>
+            <div class="dcrm">CRM 81.810</div>
+            <div class="drole"><i data-lucide="graduation-cap"></i> Mestre em Oftalmologia · UFRJ</div>
+          </figcaption>
+        </figure>
+        <figure class="doc-card sm anim pop" style="--d:5">
+          <span class="tag">Inovação</span>
+          <img src="assets/img/dr-ivo-rocha-neto.jpg" alt="Dr. Ivo Rocha Neto, oftalmologista">
+          <figcaption class="scrim">
+            <div class="dname">Dr. Ivo Rocha Neto</div>
+            <div class="dcrm">CRM 173.991</div>
+            <div class="drole"><i data-lucide="aperture"></i> Ceratocone · Lentes esclerais</div>
+          </figcaption>
+        </figure>
+        <span class="duo-badge anim" style="--d:6"><i data-lucide="heart-pulse"></i> Tradição &amp; Inovação</span>
       </div>
-      <div class="float-badge">Referência em Taubaté e Região</div>
     </div>
   </div>
   <div class="hero-bottom-line"></div>
@@ -257,41 +410,81 @@
 
 <!-- ============ ESPECIALIDADES ============ -->
 <section class="sec wrap" id="especialidades">
-  <div class="sec-head rv">
-    <div class="eyebrow">01 — Especialidades</div>
-    <h2>Cuidado completo para a sua visão</h2>
-    <p>Do diagnóstico de alta precisão aos tratamentos de alta complexidade, reunimos tecnologia de última geração e rigor científico em cada atendimento.</p>
-  </div>
-  <div class="grid-spec stag">
-    <div class="card">
-      <div class="ic"><i data-lucide="scan-eye"></i></div>
-      <h4>Catarata e Lentes Intraoculares</h4>
-      <p>Recupere a acuidade visual e a percepção cromática por meio de procedimentos modernos, seguros e de rápida recuperação, visando a eliminação da opacidade visual.</p>
-    </div>
-    <div class="card">
-      <div class="ic"><i data-lucide="aperture"></i></div>
-      <h4>Lentes de Contato e Ceratocone</h4>
-      <p>Especialização técnica na adaptação de lentes convencionais e esclerais. Protocolos avançados para o manejo do Ceratocone, assegurando conforto e a máxima acuidade visual possível.</p>
-    </div>
-    <div class="card">
-      <div class="ic"><i data-lucide="droplets"></i></div>
-      <h4>Tratamento de Olho Seco</h4>
-      <p>Diagnóstico especializado e protocolos terapêuticos modernos para o tratamento da síndrome do Olho Seco, restaurando a homeostase ocular e aliviando o desconforto crônico.</p>
-    </div>
-    <div class="card">
-      <div class="ic"><i data-lucide="scissors"></i></div>
-      <h4>Cirurgias de Calázio e Pterígio</h4>
-      <p>Intervenções cirúrgicas seguras para a exérese de Calázio e Pterígio, priorizando a integridade da superfície ocular e o restabelecimento estético-funcional.</p>
-    </div>
-    <div class="card">
-      <div class="ic"><i data-lucide="gauge"></i></div>
-      <h4>Glaucoma e Pressão Ocular</h4>
-      <p>Monitoramento preventivo e abordagens terapêuticas avançadas para a preservação do campo visual e o controle da progressão da patologia.</p>
-    </div>
-    <div class="card">
-      <div class="ic"><i data-lucide="microscope"></i></div>
-      <h4>Exames Diagnósticos de Alta Precisão</h4>
-      <p>Check-up oftalmológico completo com tecnologia de última geração: Mapeamento de Retina, Topografia, Campo Visual e PAM (Potencial de Acuidade Visual).</p>
+  <div class="spec-layout">
+    <!-- sticky branded panel with exam photo -->
+    <aside class="spec-aside rv">
+      <div class="spec-panel">
+        <div class="sp-waves" aria-hidden="true">
+          <div class="track">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 Q90,0 180,40 Q270,80 360,40 Q450,0 540,40 Q630,80 720,40 Q810,0 900,40 Q990,80 1080,40 Q1170,0 1260,40 Q1350,80 1440,40" fill="none" stroke="#AAA7F2" stroke-width="2"/></svg>
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 Q90,0 180,40 Q270,80 360,40 Q450,0 540,40 Q630,80 720,40 Q810,0 900,40 Q990,80 1080,40 Q1170,0 1260,40 Q1350,80 1440,40" fill="none" stroke="#AAA7F2" stroke-width="2"/></svg>
+          </div>
+        </div>
+        <div class="sp-glow" aria-hidden="true"></div>
+        <div class="sp-content">
+          <div class="eyebrow">01 — Especialidades</div>
+          <h2 class="sp-title">Cuidado completo para a sua visão</h2>
+          <p class="sp-text">Do diagnóstico de alta precisão aos tratamentos de alta complexidade, reunimos tecnologia de última geração e rigor científico em cada atendimento.</p>
+          <figure class="sp-photo">
+            <img src="assets/img/exame-19.jpg" alt="Dr. Ivo Rocha realizando exame em lâmpada de fenda no Centro Oftalmológico de Taubaté" loading="lazy">
+            <span class="sp-scan" aria-hidden="true"></span>
+            <figcaption class="sp-cap"><i data-lucide="microscope"></i> Tecnologia de última geração</figcaption>
+          </figure>
+          <a class="btn btn-royal sp-cta" href="https://wa.me/5512988537005" target="_blank" rel="noopener">Agendar avaliação <i data-lucide="arrow-right"></i></a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- interactive specialty cards -->
+    <div class="spec-cards stag">
+      <a class="spec-card" href="https://wa.me/5512988537005" target="_blank" rel="noopener" data-wa="Catarata e Lentes Intraoculares">
+        <span class="sc-top" aria-hidden="true"></span><span class="sc-num">01</span>
+        <span class="ic"><i data-lucide="scan-eye"></i></span>
+        <h4>Catarata e Lentes Intraoculares</h4>
+        <p>Recupere a acuidade visual e a percepção cromática por meio de procedimentos modernos, seguros e de rápida recuperação, visando a eliminação da opacidade visual.</p>
+        <span class="sc-more">Saiba mais <i data-lucide="arrow-right"></i></span>
+        <span class="sc-wave" aria-hidden="true"><svg viewBox="0 0 300 44" preserveAspectRatio="none"><path d="M0,22 Q37.5,2 75,22 Q112.5,42 150,22 Q187.5,2 225,22 Q262.5,42 300,22 L300,44 L0,44 Z" fill="#AAA7F2"/></svg></span>
+      </a>
+      <a class="spec-card" href="https://wa.me/5512988537005" target="_blank" rel="noopener" data-wa="Lentes de Contato e Ceratocone">
+        <span class="sc-top" aria-hidden="true"></span><span class="sc-num">02</span>
+        <span class="ic"><i data-lucide="aperture"></i></span>
+        <h4>Lentes de Contato e Ceratocone</h4>
+        <p>Especialização técnica na adaptação de lentes convencionais e esclerais. Protocolos avançados para o manejo do Ceratocone, assegurando conforto e a máxima acuidade visual possível.</p>
+        <span class="sc-more">Saiba mais <i data-lucide="arrow-right"></i></span>
+        <span class="sc-wave" aria-hidden="true"><svg viewBox="0 0 300 44" preserveAspectRatio="none"><path d="M0,22 Q37.5,2 75,22 Q112.5,42 150,22 Q187.5,2 225,22 Q262.5,42 300,22 L300,44 L0,44 Z" fill="#AAA7F2"/></svg></span>
+      </a>
+      <a class="spec-card" href="https://wa.me/5512988537005" target="_blank" rel="noopener" data-wa="Tratamento de Olho Seco">
+        <span class="sc-top" aria-hidden="true"></span><span class="sc-num">03</span>
+        <span class="ic"><i data-lucide="droplets"></i></span>
+        <h4>Tratamento de Olho Seco</h4>
+        <p>Diagnóstico especializado e protocolos terapêuticos modernos para o tratamento da síndrome do Olho Seco, restaurando a homeostase ocular e aliviando o desconforto crônico.</p>
+        <span class="sc-more">Saiba mais <i data-lucide="arrow-right"></i></span>
+        <span class="sc-wave" aria-hidden="true"><svg viewBox="0 0 300 44" preserveAspectRatio="none"><path d="M0,22 Q37.5,2 75,22 Q112.5,42 150,22 Q187.5,2 225,22 Q262.5,42 300,22 L300,44 L0,44 Z" fill="#AAA7F2"/></svg></span>
+      </a>
+      <a class="spec-card" href="https://wa.me/5512988537005" target="_blank" rel="noopener" data-wa="Cirurgias de Calázio e Pterígio">
+        <span class="sc-top" aria-hidden="true"></span><span class="sc-num">04</span>
+        <span class="ic"><i data-lucide="scissors"></i></span>
+        <h4>Cirurgias de Calázio e Pterígio</h4>
+        <p>Intervenções cirúrgicas seguras para a exérese de Calázio e Pterígio, priorizando a integridade da superfície ocular e o restabelecimento estético-funcional.</p>
+        <span class="sc-more">Saiba mais <i data-lucide="arrow-right"></i></span>
+        <span class="sc-wave" aria-hidden="true"><svg viewBox="0 0 300 44" preserveAspectRatio="none"><path d="M0,22 Q37.5,2 75,22 Q112.5,42 150,22 Q187.5,2 225,22 Q262.5,42 300,22 L300,44 L0,44 Z" fill="#AAA7F2"/></svg></span>
+      </a>
+      <a class="spec-card" href="https://wa.me/5512988537005" target="_blank" rel="noopener" data-wa="Glaucoma e Pressão Ocular">
+        <span class="sc-top" aria-hidden="true"></span><span class="sc-num">05</span>
+        <span class="ic"><i data-lucide="gauge"></i></span>
+        <h4>Glaucoma e Pressão Ocular</h4>
+        <p>Monitoramento preventivo e abordagens terapêuticas avançadas para a preservação do campo visual e o controle da progressão da patologia.</p>
+        <span class="sc-more">Saiba mais <i data-lucide="arrow-right"></i></span>
+        <span class="sc-wave" aria-hidden="true"><svg viewBox="0 0 300 44" preserveAspectRatio="none"><path d="M0,22 Q37.5,2 75,22 Q112.5,42 150,22 Q187.5,2 225,22 Q262.5,42 300,22 L300,44 L0,44 Z" fill="#AAA7F2"/></svg></span>
+      </a>
+      <a class="spec-card" href="https://wa.me/5512988537005" target="_blank" rel="noopener" data-wa="Exames Diagnósticos de Alta Precisão">
+        <span class="sc-top" aria-hidden="true"></span><span class="sc-num">06</span>
+        <span class="ic"><i data-lucide="microscope"></i></span>
+        <h4>Exames Diagnósticos de Alta Precisão</h4>
+        <p>Check-up oftalmológico completo com tecnologia de última geração: Mapeamento de Retina, Topografia, Campo Visual e PAM (Potencial de Acuidade Visual).</p>
+        <span class="sc-more">Saiba mais <i data-lucide="arrow-right"></i></span>
+        <span class="sc-wave" aria-hidden="true"><svg viewBox="0 0 300 44" preserveAspectRatio="none"><path d="M0,22 Q37.5,2 75,22 Q112.5,42 150,22 Q187.5,2 225,22 Q262.5,42 300,22 L300,44 L0,44 Z" fill="#AAA7F2"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
@@ -454,6 +647,95 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     targets.forEach(function(t){ io.observe(t); });
+  })();
+
+  // Floating header: morph on scroll (rAF-throttled)
+  (function(){
+    var shell = document.getElementById('navShell');
+    if (!shell) return;
+    var ticking = false;
+    function update(){ shell.classList.toggle('scrolled', window.scrollY > 12); ticking = false; }
+    window.addEventListener('scroll', function(){
+      if (!ticking){ window.requestAnimationFrame(update); ticking = true; }
+    }, { passive:true });
+    update();
+  })();
+
+  // Mobile menu toggle
+  (function(){
+    var btn = document.getElementById('menuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    function setIcon(name){ btn.innerHTML = '<i data-lucide="' + name + '"></i>'; if (window.lucide) try{ window.lucide.createIcons(); }catch(e){} }
+    function close(){ menu.classList.remove('open'); btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Abrir menu'); setIcon('menu'); }
+    function toggle(){
+      var open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true':'false');
+      btn.setAttribute('aria-label', open ? 'Fechar menu':'Abrir menu');
+      setIcon(open ? 'x' : 'menu');
+    }
+    btn.addEventListener('click', toggle);
+    menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+    window.addEventListener('resize', function(){ if (window.innerWidth > 720) close(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  })();
+
+  // Hero entrance (staggered reveal on load)
+  (function(){
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ hero.classList.add('is-loaded'); }); });
+  })();
+
+  // Hero duo pointer parallax (subtle depth; fine pointers only, respects reduced-motion)
+  (function(){
+    var duo = document.getElementById('heroDuo');
+    var hero = document.querySelector('.hero');
+    if (!duo || !hero) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var fine = window.matchMedia('(pointer: fine)').matches;
+    if (reduce || !fine) return;
+    var raf = null, tx = 0, ty = 0;
+    function onMove(e){
+      var r = hero.getBoundingClientRect();
+      var nx = (e.clientX - r.left) / r.width - 0.5;   // -0.5 .. 0.5
+      var ny = (e.clientY - r.top) / r.height - 0.5;
+      tx = nx * 14; ty = ny * 10;
+      if (!raf) raf = requestAnimationFrame(apply);
+    }
+    function apply(){ duo.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0)'; raf = null; }
+    function reset(){ if (raf) cancelAnimationFrame(raf); raf = null; duo.style.transform = 'translate3d(0,0,0)'; }
+    // start only after entrance settles to avoid clashing with entrance transforms
+    setTimeout(function(){
+      hero.addEventListener('pointermove', onMove, { passive:true });
+      hero.addEventListener('pointerleave', reset, { passive:true });
+    }, 1300);
+  })();
+
+  // Specialty cards → prefilled WhatsApp message (graceful: base link works without JS)
+  (function(){
+    var base = 'https://wa.me/5512988537005';
+    document.querySelectorAll('.spec-card[data-wa]').forEach(function(a){
+      var name = a.getAttribute('data-wa');
+      a.href = base + '?text=' + encodeURIComponent('Olá! Gostaria de agendar uma avaliação sobre: ' + name + '.');
+    });
+  })();
+
+  // Active nav link on scroll (scroll-spy)
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('.navlinks a'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function(a){ var id = a.getAttribute('href').slice(1); if (id) map[id] = a; });
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){
+          links.forEach(function(l){ l.classList.remove('active'); });
+          var a = map[en.target.id]; if (a) a.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    Object.keys(map).forEach(function(id){ var s = document.getElementById(id); if (s) spy.observe(s); });
   })();
 </script>
 </body>
