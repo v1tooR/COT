@@ -1,0 +1,15 @@
+{
+  "name": "Centro Oftalmológico de Taubaté",
+  "short_name": "COT",
+  "description": "Excelência e precisão em saúde ocular. Referência em Taubaté e Região.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000091",
+  "theme_color": "#000091",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "favicon.svg", "type": "image/svg+xml", "sizes": "any" }
+  ]
+}
