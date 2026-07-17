@@ -195,7 +195,7 @@
   .hero .waves .track{ display:flex; width:200%; animation:waveMove 22s linear infinite; }
   .hero .waves svg{ width:50%; height:230px; }
   .hero .glow{ position:absolute; right:-140px; top:40px; width:460px; height:460px; border-radius:999px; background:radial-gradient(circle at 30% 30%, rgba(95,91,217,.55), transparent 62%); filter:blur(10px); pointer-events:none; }
-  .hero .wrap{ position:relative; display:grid; grid-template-columns:1.12fr 0.88fr; gap:40px; align-items:center; padding-top:72px; padding-bottom:96px; }
+  .hero .wrap{ position:relative; display:grid; grid-template-columns:1.12fr 0.88fr; gap:40px; align-items:center; padding-top:72px; padding-bottom:64px; }
   .badge{ display:inline-flex; align-items:center; gap:10px; padding:7px 15px; border:1px solid rgba(170,167,242,.4); border-radius:999px; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--lavender); background:rgba(170,167,242,.06); }
   .badge .dot{ width:7px; height:7px; border-radius:999px; background:var(--lavender); box-shadow:0 0 0 0 rgba(170,167,242,.6); animation:pulseDot 2.4s ease-out infinite; }
   .hero h1{ margin-top:24px; font-size:clamp(34px,4.6vw,56px); line-height:1.05; font-weight:800; max-width:15ch; }
@@ -213,26 +213,18 @@
   .hero-visual{ position:relative; }
   .duo-cap{ display:inline-flex; align-items:center; gap:9px; margin:0 0 16px 4px; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--lavender); }
   .duo-cap .ln{ width:26px; height:1px; background:linear-gradient(90deg, var(--lavender), transparent); }
-  .hero-duo{ position:relative; height:clamp(488px,42vw,560px); transform:translate3d(0,0,0); transition:transform .5s cubic-bezier(.2,.7,.2,1); }
+  .hero-duo{ position:relative; height:clamp(440px,38vw,500px); transform:translate3d(0,0,0); transition:transform .5s cubic-bezier(.2,.7,.2,1); }
   .hero-duo::before{ content:""; position:absolute; inset:-8% -6% 2% -6%; z-index:0; background:radial-gradient(58% 55% at 52% 42%, rgba(95,91,217,.45), transparent 72%); filter:blur(24px); pointer-events:none; }
-  .doc-card{ position:absolute; border-radius:var(--r-xl); overflow:hidden; border:1px solid rgba(170,167,242,.22); background:#0a0a6e; transition:box-shadow .45s ease, border-color .45s ease; }
-  .doc-card img{ width:100%; height:100%; object-fit:cover; object-position:center 12%; display:block; transition:transform .7s cubic-bezier(.2,.7,.2,1); }
-  .doc-card.lg{ left:0; top:0; width:64%; height:86%; z-index:1; box-shadow:0 40px 76px -28px rgba(0,0,0,.72); }
-  .doc-card.lg img{ object-position:42% 12%; }
-  .doc-card.sm{ right:0; bottom:0; width:43%; height:70%; z-index:2; border-color:rgba(255,255,255,.16); box-shadow:0 44px 88px -24px rgba(0,0,0,.88); }
-  .doc-card:hover{ z-index:3; border-color:rgba(170,167,242,.6); }
-  .doc-card.lg:hover{ box-shadow:0 54px 96px -26px rgba(0,0,0,.82); }
-  .doc-card.sm:hover{ box-shadow:0 58px 104px -24px rgba(0,0,0,.9); }
-  .doc-card:hover img{ transform:scale(1.05); }
+  .doc-card{ position:absolute; z-index:1; overflow:hidden; border:1px solid rgba(170,167,242,.25); border-radius:var(--r-xl); background:#cbd6d4; box-shadow:0 40px 76px -28px rgba(0,0,0,.72); transition:box-shadow .45s ease, border-color .45s ease; }
+  .doc-card img{ width:100%; height:100%; object-fit:cover; object-position:center center; display:block; }
+  .doc-card.lg{ left:0; top:0; width:64%; aspect-ratio:4 / 5; }
+  .doc-card.sm{ right:0; top:clamp(84px,7vw,100px); width:50%; aspect-ratio:2 / 3; z-index:2; border-color:rgba(255,255,255,.18); box-shadow:0 44px 88px -24px rgba(0,0,0,.8); }
+  .doc-card.sm img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center top; transform:translateY(-6px); }
+  .doc-card:hover{ border-color:rgba(170,167,242,.6); box-shadow:0 54px 96px -26px rgba(0,0,0,.82); }
   .doc-card .tag{ position:absolute; top:14px; left:14px; z-index:2; padding:7px 13px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; background:rgba(0,0,60,.5); color:var(--lavender); backdrop-filter:blur(6px); border:1px solid rgba(170,167,242,.3); }
   .doc-card .scrim{ position:absolute; left:0; right:0; bottom:0; padding:52px 20px 20px; background:linear-gradient(to top, rgba(0,0,70,.96), rgba(0,0,70,.6) 50%, transparent); }
   .doc-card .dname{ font-size:19px; font-weight:700; color:#fff; line-height:1.2; }
   .doc-card .dcrm{ margin-top:4px; font-size:13px; font-weight:600; letter-spacing:.06em; color:var(--lavender); }
-  .doc-card .drole{ margin-top:10px; display:inline-flex; align-items:center; gap:7px; font-size:12px; color:rgba(255,255,255,.78); line-height:1.3; }
-  .doc-card .drole i,.doc-card .drole svg{ width:13px; height:13px; color:var(--beige); flex:none; }
-  .doc-card.lg .drole{ display:none; }  /* big back card: front card overlaps its lower-right, so keep caption short */
-  .duo-badge{ position:absolute; left:50%; bottom:-18px; transform:translate(-50%,0); z-index:4; display:inline-flex; align-items:center; gap:7px; background:var(--beige); color:var(--navy); border-radius:999px; padding:9px 16px; font-size:12px; font-weight:700; box-shadow:var(--sh-lg); animation:floatBadge 5.5s ease-in-out infinite; }
-  .duo-badge i,.duo-badge svg{ width:15px; height:15px; }
   .hero-bottom-line{ position:absolute; left:0; right:0; bottom:0; height:1px; background:linear-gradient(90deg, transparent, rgba(170,167,242,.55), transparent); }
 
   /* hero entrance (only when JS active) */
@@ -241,7 +233,7 @@
   html.js .hero.is-loaded .anim{ opacity:1; transform:none; }
   @media (prefers-reduced-motion:reduce){
     html.js .hero .anim{ opacity:1 !important; transform:none !important; transition:none !important; }
-    .duo-badge,.badge .dot{ animation:none !important; }
+    .badge .dot{ animation:none !important; }
   }
 
   /* ---------- section shell ---------- */
@@ -406,7 +398,7 @@
   .doc .info h4{ font-size:21px; font-weight:700; line-height:1.14; }
   .doc .info .role{ margin-top:7px; font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--royal); }
   .doc .lead{ margin-top:14px; font-size:14px; line-height:1.6; color:rgba(11,11,51,.72); }
-  .doc .creds{ list-style:none; margin:16px 0 0; padding:0; display:flex; flex-direction:column; gap:11px; }
+  .doc .creds{ list-style:none; margin:16px 0 20px; padding:0; display:flex; flex-direction:column; gap:11px; }
   .doc .creds li{ display:flex; align-items:flex-start; gap:11px; font-size:13.5px; line-height:1.42; color:rgba(11,11,51,.74); }
   .doc .creds .ci2{ flex:none; width:30px; height:30px; border-radius:9px; background:var(--offwhite); display:flex; align-items:center; justify-content:center; color:var(--navy); transition:background .3s ease, color .3s ease, transform .4s cubic-bezier(.2,.7,.2,1); }
   .doc .creds .ci2 i,.doc .creds .ci2 svg{ width:15px; height:15px; }
@@ -470,7 +462,6 @@
   @keyframes floatY{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
   @keyframes pulseRing{ 0%{ box-shadow:0 0 0 0 rgba(37,211,102,.55); } 70%{ box-shadow:0 0 0 18px rgba(37,211,102,0); } 100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); } }
   @keyframes pulseDot{ 0%{ box-shadow:0 0 0 0 rgba(170,167,242,.6); } 70%{ box-shadow:0 0 0 8px rgba(170,167,242,0); } 100%{ box-shadow:0 0 0 0 rgba(170,167,242,0); } }
-  @keyframes floatBadge{ 0%,100%{ transform:translate(-50%,0); } 50%{ transform:translate(-50%,-8px); } }
   @keyframes scanY{ 0%{ top:0; opacity:0; } 12%{ opacity:1; } 50%{ top:calc(100% - 2px); opacity:1; } 62%{ opacity:0; } 100%{ top:0; opacity:0; } }
 
   /* official WhatsApp glyph */
@@ -485,16 +476,12 @@
 
   /* ---------- responsive ---------- */
   @media (max-width:940px){
-    .hero .wrap{ grid-template-columns:1fr; gap:40px; padding-top:52px; padding-bottom:80px; }
+    .hero .wrap{ grid-template-columns:1fr; gap:40px; padding-top:52px; padding-bottom:64px; }
     .hero-visual{ width:100%; max-width:720px; margin:0 auto; }
     .duo-cap{ margin-bottom:14px; }
-    .hero-duo{ display:block; height:clamp(488px,78vw,620px); }
-    .doc-card.lg{ position:absolute; left:0; top:0; width:64%; height:86%; }
-    .doc-card.sm{ position:absolute; right:0; bottom:0; width:43%; height:70%; margin:0; box-shadow:0 34px 66px -28px rgba(0,0,0,.72); }
-    .doc-card img{ height:100%; object-position:center 12%; }
-    .doc-card.lg img{ object-position:42% 12%; }
-    .doc-card .drole,.doc-card.lg .drole{ display:inline-flex; }
-    .duo-badge{ bottom:-22px; }
+    .hero-duo{ height:clamp(460px,80vw,620px); }
+    .doc-card.lg{ width:64%; }
+    .doc-card.sm{ top:80px; width:48%; }
     .spec-layout{ grid-template-columns:1fr; gap:24px; }
     .spec-aside{ position:static; }
     .sp-photo img{ height:clamp(220px,34vw,300px); }
@@ -513,16 +500,13 @@
     .nav-shell.scrolled .nav-bar{ padding:8px 10px 8px 18px; }
     .sec{ padding-top:64px; padding-bottom:64px; }
     .sec.wrap{ padding-left:max(20px,env(safe-area-inset-left)); padding-right:max(20px,env(safe-area-inset-right)); }
-    /* Keep a light side overlap on phones without reaching the founder's face. */
+    /* Preserve the floating overlap while keeping each portrait close to its source ratio. */
     .hero-visual{ max-width:430px; margin:0 auto; }
-    .hero-duo{ display:block; height:clamp(420px,115vw,520px); }
-    .doc-card.lg{ position:absolute; left:0; top:0; width:66%; height:88%; }
-    .doc-card.sm{ position:absolute; right:0; bottom:0; width:45%; height:70%; margin:0; box-shadow:0 34px 66px -28px rgba(0,0,0,.72); }
-    .doc-card img{ height:100%; object-position:center 12%; }
-    .doc-card.lg img{ object-position:42% 12%; }
-    .doc-card .drole,.doc-card.lg .drole{ display:inline-flex; }
-    .doc-card .scrim{ padding:48px 18px 18px; }
-    .duo-badge{ position:absolute; left:50%; bottom:-18px; display:flex; width:max-content; margin:0; transform:translate(-50%,0); animation:floatBadge 5.5s ease-in-out infinite; }
+    .hero-duo{ height:clamp(340px,95vw,410px); }
+    .doc-card{ border-radius:22px; }
+    .doc-card.lg{ width:68%; }
+    .doc-card.sm{ top:64px; width:50%; }
+    .doc-card .scrim{ padding:56px 14px 16px; }
     .hero-stats .st{ padding-right:18px; margin-right:18px; }
     .spec-cards{ grid-template-columns:1fr; }
     .sc-more{ opacity:1; transform:none; }
@@ -568,7 +552,7 @@
     .team-head .team-h2{ max-width:17ch; font-size:clamp(32px,9.4vw,42px); line-height:1.04; overflow-wrap:normal; }
     .team-head .team-intro{ max-width:38ch; margin-top:24px; padding-left:18px; font-size:16px; line-height:1.58; }
 
-    .hero .wrap{ grid-template-columns:minmax(0,1fr); gap:48px; padding-top:44px; padding-bottom:68px; }
+    .hero .wrap{ grid-template-columns:minmax(0,1fr); gap:48px; padding-top:44px; padding-bottom:52px; }
     .hero .glow{ right:-210px; top:80px; width:400px; height:400px; }
     .badge{ max-width:100%; white-space:normal; line-height:1.35; letter-spacing:.1em; }
     .hero h1{ margin-top:20px; max-width:13ch; font-size:clamp(32px,10vw,44px); line-height:1.06; overflow-wrap:anywhere; }
@@ -584,8 +568,7 @@
     .hero-stats .st:last-child{ grid-column:1/-1; padding:16px 0 0; border:0; }
     .hero-stats .st .n{ font-size:27px; line-height:1.1; overflow-wrap:anywhere; }
     .hero-stats .st .l{ line-height:1.35; }
-    .doc-card img{ height:clamp(290px,82vw,370px); }
-    .duo-badge{ width:fit-content; max-width:100%; text-align:center; }
+    .doc-card img{ height:100%; }
 
     .spec-panel{ padding:26px 22px; border-radius:22px; }
     .sp-title{ font-size:27px; }
@@ -634,7 +617,7 @@
     .sec.wrap{ padding-left:max(16px,env(safe-area-inset-left)); padding-right:max(16px,env(safe-area-inset-right)); }
     .nav-bar{ padding-left:16px; padding-right:16px; }
     .mobile-menu{ margin-left:12px; margin-right:12px; }
-    .hero .wrap{ padding-top:36px; padding-bottom:58px; }
+    .hero .wrap{ padding-top:36px; padding-bottom:46px; }
     .badge{ width:100%; justify-content:center; padding:8px 10px; font-size:10.5px; }
     .hero h1{ font-size:clamp(30px,10.2vw,39px); }
     .social-proof{ display:grid; grid-template-columns:minmax(0,1fr); gap:14px; }
@@ -732,13 +715,12 @@
         </figure>
         <figure class="doc-card sm anim pop" style="--d:5">
           <span class="tag">Inovação</span>
-          <img src="assets/img/dr-ivo-rocha-neto.jpg" alt="Dr. Ivo Rocha Neto, oftalmologista">
+          <img src="assets/img/doutor_52_1.webp" width="1062" height="1593" decoding="async" alt="Dr. Ivo Rocha Neto, oftalmologista">
           <figcaption class="scrim">
             <div class="dname">Dr. Ivo Rocha Neto</div>
             <div class="dcrm">CRM 173.991</div>
           </figcaption>
         </figure>
-        <span class="duo-badge anim" style="--d:6"><i data-lucide="heart-pulse"></i> Tradição &amp; Inovação</span>
       </div>
     </div>
   </div>
