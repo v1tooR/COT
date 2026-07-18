@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Política de Privacidade | Centro Oftalmológico de Taubaté</title>
+<meta name="description" content="Política de Privacidade e de Cookies do Centro Oftalmológico de Taubaté (COT), em conformidade com a Lei Geral de Proteção de Dados (LGPD).">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#000091">
+<link rel="canonical" href="https://centrooftalmologicotaubate.com.br/privacidade.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#000091; --royal:#5F5BD9; --lavender:#AAA7F2; --beige:#F2DAAC;
+    --offwhite:#F2F2F2; --ink:#0B0B33; --wa:#25D366;
+    --r-lg:20px; --r-xl:26px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; scroll-padding-top:100px; }
+  html,body{ max-width:100%; }
+  body{ margin:0; overflow-x:clip; background:var(--offwhite); color:var(--ink);
+    font-family:'Montserrat',system-ui,sans-serif; font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased; }
+  a{ color:var(--royal); text-decoration:none; }
+  .wrap{ width:100%; max-width:1120px; margin:0 auto; padding:0 24px; }
+
+  /* ---- top bar ---- */
+  .topbar{ position:sticky; top:0; z-index:50; background:rgba(242,242,242,.86);
+    -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(11,11,51,.08); }
+  .topbar .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:14px; padding-bottom:14px; }
+  .topbar img{ height:34px; width:auto; display:block; }
+  .btn-back{ display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:600;
+    color:#fff; background:var(--navy); padding:11px 18px; border-radius:999px; min-height:44px;
+    transition:transform .25s ease, box-shadow .25s ease; }
+  .btn-back:hover{ transform:translateY(-1px); box-shadow:0 12px 26px -12px rgba(0,0,145,.6); }
+  .btn-back svg{ width:16px; height:16px; }
+
+  /* ---- hero band ---- */
+  .p-hero{ background:linear-gradient(160deg, var(--navy), #12124a); color:#fff; position:relative; overflow:hidden; }
+  .p-hero::after{ content:""; position:absolute; right:-140px; top:-120px; width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle, rgba(95,91,217,.55), transparent 70%); filter:blur(20px); pointer-events:none; }
+  .p-hero .wrap{ padding-top:64px; padding-bottom:52px; position:relative; z-index:1; }
+  .p-hero .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--lavender);
+    border:1px solid rgba(170,167,242,.3); background:rgba(170,167,242,.1); padding:7px 14px; border-radius:999px; }
+  .p-hero h1{ margin:20px 0 0; font-size:clamp(30px,5vw,46px); font-weight:800; letter-spacing:-.02em; line-height:1.08; }
+  .p-hero .updated{ margin-top:16px; font-size:13.5px; color:rgba(255,255,255,.66); }
+  .p-hero .updated b{ color:#fff; font-weight:600; }
+
+  /* ---- layout ---- */
+  .p-body{ padding:48px 0 72px; }
+  .p-grid{ display:grid; grid-template-columns:250px 1fr; gap:48px; align-items:start; }
+
+  /* TOC */
+  .toc{ position:sticky; top:96px; font-size:13.5px; }
+  .toc .toc-t{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:rgba(11,11,51,.5); font-weight:700; margin-bottom:14px; }
+  .toc ol{ list-style:none; margin:0; padding:0; counter-reset:toc; }
+  .toc li{ counter-increment:toc; margin-bottom:2px; }
+  .toc a{ display:flex; gap:10px; padding:7px 10px; border-radius:9px; color:rgba(11,11,51,.68);
+    line-height:1.4; transition:background .2s ease, color .2s ease; }
+  .toc a::before{ content:counter(toc,decimal-leading-zero); font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--royal); flex:none; padding-top:1px; }
+  .toc a:hover{ background:rgba(95,91,217,.08); color:var(--navy); }
+
+  /* Article */
+  .article{ max-width:720px; }
+  .article > section{ padding-top:14px; margin-bottom:34px; scroll-margin-top:100px; }
+  .article h2{ display:flex; align-items:baseline; gap:12px; font-size:clamp(20px,2.6vw,25px); font-weight:800;
+    letter-spacing:-.015em; color:var(--navy); line-height:1.25; margin:0 0 14px; }
+  .article h2 .num{ font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:500; color:var(--royal); flex:none; }
+  .article h3{ font-size:16px; font-weight:700; color:var(--ink); margin:22px 0 8px; }
+  .article p{ margin:0 0 14px; color:rgba(11,11,51,.82); }
+  .article ul{ margin:0 0 16px; padding-left:0; list-style:none; }
+  .article ul li{ position:relative; padding-left:24px; margin-bottom:9px; color:rgba(11,11,51,.82); }
+  .article ul li::before{ content:""; position:absolute; left:4px; top:10px; width:7px; height:7px; border-radius:2px;
+    background:var(--royal); transform:rotate(45deg); }
+  .article strong{ color:var(--ink); font-weight:700; }
+  .article a{ font-weight:600; text-decoration:underline; text-underline-offset:2px; }
+
+  .callout{ border:1px solid rgba(95,91,217,.25); background:linear-gradient(160deg, rgba(170,167,242,.12), rgba(242,218,172,.1));
+    border-radius:var(--r-lg); padding:20px 22px; margin:6px 0 20px; }
+  .callout .ttl{ display:flex; align-items:center; gap:9px; font-weight:700; color:var(--navy); margin-bottom:6px; font-size:14.5px; }
+  .callout .ttl svg{ width:18px; height:18px; color:var(--royal); flex:none; }
+  .callout p{ margin:0; font-size:14px; color:rgba(11,11,51,.78); }
+
+  .rights{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:4px 0 18px; }
+  .right-card{ border:1px solid rgba(11,11,51,.1); border-radius:14px; padding:15px 16px; background:#fff; }
+  .right-card .rc-t{ font-size:14px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .right-card p{ margin:0; font-size:12.5px; line-height:1.5; color:rgba(11,11,51,.68); }
+
+  .contact-box{ border-radius:var(--r-xl); background:var(--navy); color:#fff; padding:30px 32px; margin-top:8px; }
+  .contact-box h3{ color:#fff; margin:0 0 6px; font-size:19px; }
+  .contact-box p{ color:rgba(255,255,255,.75); margin:0 0 16px; font-size:14px; }
+  .contact-box .rows{ display:grid; gap:10px; font-size:14px; }
+  .contact-box .rows .r{ display:flex; gap:10px; align-items:flex-start; }
+  .contact-box .rows .r span.k{ color:var(--lavender); font-weight:600; min-width:112px; flex:none; }
+  .contact-box .rows a{ color:#fff; text-decoration:underline; text-underline-offset:2px; }
+
+  .ph{ background:rgba(242,218,172,.5); border-bottom:1px dashed rgba(11,11,51,.4); padding:0 3px; border-radius:3px 3px 0 0; }
+  .p-hero .ph{ background:rgba(242,218,172,.22); border-bottom-color:rgba(255,255,255,.5); color:#fff; }
+
+  /* footer (mesma identidade da home) */
+  footer{ background:var(--navy); color:#fff; }
+  footer .f-main{ padding:48px 0 30px; display:grid; grid-template-columns:1.6fr 1fr; gap:32px; align-items:start; }
+  footer .f-logo img{ height:38px; margin-bottom:16px; }
+  footer .f-logo p{ font-size:13.5px; line-height:1.6; color:rgba(255,255,255,.6); max-width:40ch; }
+  footer h5{ font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--lavender); font-weight:600; margin:0 0 12px; }
+  footer .med-row{ font-size:12.5px; line-height:1.6; color:rgba(255,255,255,.68); margin:0 0 6px; }
+  footer .med-row b{ color:#fff; font-weight:600; }
+  footer .med-row .rqe{ color:var(--lavender); font-weight:600; }
+  footer .med-note{ font-size:11.5px; line-height:1.6; color:rgba(255,255,255,.48); margin:10px 0 0; }
+  footer .f-bottom{ border-top:1px solid rgba(255,255,255,.12); }
+  footer .f-bottom .wrap{ padding:20px 24px; display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center; }
+  footer .f-bottom .meta{ font-size:12.5px; color:rgba(255,255,255,.55); }
+  footer .f-bottom a{ font-size:12.5px; color:rgba(255,255,255,.75); }
+  footer .f-bottom a:hover{ color:#fff; }
+
+  @media (max-width:900px){
+    .p-grid{ grid-template-columns:1fr; gap:8px; }
+    .toc{ position:static; margin-bottom:24px; border:1px solid rgba(11,11,51,.1); border-radius:16px; padding:16px 14px; background:#fff; }
+    .toc ol{ columns:2; column-gap:18px; }
+    footer .f-main{ grid-template-columns:1fr; gap:26px; }
+  }
+  @media (max-width:560px){
+    .wrap{ padding:0 18px; }
+    .rights{ grid-template-columns:1fr; }
+    .toc ol{ columns:1; }
+    .contact-box .rows .r{ flex-direction:column; gap:2px; }
+    .contact-box .rows .r span.k{ min-width:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="index.html" aria-label="Centro Oftalmológico de Taubaté — página inicial"><img src="assets/logo/cotlogo-navy.svg" alt="Centro Oftalmológico de Taubaté"></a>
+    <a class="btn-back" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Voltar ao site
+    </a>
+  </div>
+</div>
+
+<header class="p-hero">
+  <div class="wrap">
+    <span class="eyebrow">Privacidade &amp; Dados</span>
+    <h1>Política de Privacidade e de Cookies</h1>
+    <p class="updated">Última atualização: <b>18 de julho de 2026</b> · Em conformidade com a Lei nº 13.709/2018 (LGPD).</p>
+  </div>
+</header>
+
+<main class="p-body">
+  <div class="wrap p-grid">
+
+    <!-- ÍNDICE -->
+    <nav class="toc" aria-label="Índice">
+      <div class="toc-t">Neste documento</div>
+      <ol>
+        <li><a href="#controlador">Quem somos (Controlador)</a></li>
+        <li><a href="#dados">Dados que coletamos</a></li>
+        <li><a href="#finalidades">Finalidades e bases legais</a></li>
+        <li><a href="#saude">Dados de saúde e sigilo médico</a></li>
+        <li><a href="#cookies">Cookies e rastreamento</a></li>
+        <li><a href="#compartilhamento">Compartilhamento de dados</a></li>
+        <li><a href="#internacional">Transferência internacional</a></li>
+        <li><a href="#retencao">Por quanto tempo guardamos</a></li>
+        <li><a href="#direitos">Seus direitos</a></li>
+        <li><a href="#seguranca">Segurança da informação</a></li>
+        <li><a href="#menores">Menores de idade</a></li>
+        <li><a href="#alteracoes">Alterações desta política</a></li>
+        <li><a href="#contato">Encarregado (DPO) e contato</a></li>
+      </ol>
+    </nav>
+
+    <!-- ARTIGO -->
+    <article class="article">
+
+      <section id="intro">
+        <p>O <strong>Centro Oftalmológico de Taubaté (COT)</strong> respeita a sua privacidade e está comprometido com a proteção dos seus dados pessoais. Esta política explica, de forma transparente, quais dados coletamos, como e por que os utilizamos, com quem os compartilhamos e quais são os seus direitos, nos termos da <strong>Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018)</strong>.</p>
+        <p>Ao navegar neste site e utilizar nossos canais de contato, você declara estar ciente das práticas descritas abaixo.</p>
+      </section>
+
+      <section id="controlador">
+        <h2><span class="num">01</span> Quem somos (Controlador)</h2>
+        <p>O controlador dos dados pessoais tratados neste site é:</p>
+        <ul>
+          <li><strong>Centro Oftalmológico de Taubaté (COT)</strong></li>
+          <li>CNPJ: <span class="ph">00.000.000/0001-00</span></li>
+          <li>Endereço: Av. Tiradentes, 101 — 8º andar — Taubaté/SP — CEP 12030-180</li>
+          <li>Telefone: (12) 3633-5666 · WhatsApp: (12) 98853-7005</li>
+          <li>E-mail: <span class="ph">contato@centrooftalmologicotaubate.com.br</span></li>
+        </ul>
+      </section>
+
+      <section id="dados">
+        <h2><span class="num">02</span> Dados que coletamos</h2>
+        <p>Coletamos apenas os dados necessários para atender você e melhorar sua experiência:</p>
+        <h3>a) Dados que você nos fornece</h3>
+        <ul>
+          <li>Nome, telefone/WhatsApp e e-mail, quando você entra em contato ou solicita um agendamento;</li>
+          <li>Informações que você espontaneamente compartilha em mensagens (por exemplo, o motivo da consulta).</li>
+        </ul>
+        <h3>b) Dados coletados automaticamente</h3>
+        <ul>
+          <li>Endereço IP, tipo de dispositivo, navegador e sistema operacional;</li>
+          <li>Páginas visitadas, tempo de navegação e origem do acesso (por exemplo, um anúncio);</li>
+          <li>Identificadores de cookies e tecnologias semelhantes (ver seção 5).</li>
+        </ul>
+      </section>
+
+      <section id="finalidades">
+        <h2><span class="num">03</span> Finalidades e bases legais</h2>
+        <p>Tratamos seus dados para finalidades específicas, sempre amparados em uma base legal da LGPD:</p>
+        <ul>
+          <li><strong>Responder contatos e agendar consultas</strong> — execução de procedimentos preliminares e do próprio atendimento a seu pedido (art. 7º, V);</li>
+          <li><strong>Operação e segurança do site</strong> — legítimo interesse em manter o serviço estável e seguro (art. 7º, IX);</li>
+          <li><strong>Métricas de audiência (analytics)</strong> — mediante o seu <strong>consentimento</strong> no banner de cookies (art. 7º, I);</li>
+          <li><strong>Marketing e anúncios (Google Ads, Meta), inclusive remarketing</strong> — mediante o seu <strong>consentimento</strong> (art. 7º, I);</li>
+          <li><strong>Cumprimento de obrigações legais e regulatórias</strong>, inclusive de natureza sanitária e do Conselho de Medicina (art. 7º, II).</li>
+        </ul>
+      </section>
+
+      <section id="saude">
+        <h2><span class="num">04</span> Dados de saúde e sigilo médico</h2>
+        <div class="callout">
+          <div class="ttl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg> Dados sensíveis exigem cuidado especial</div>
+          <p>Informações sobre a sua saúde são consideradas <strong>dados pessoais sensíveis</strong> pela LGPD (art. 11). Só os tratamos quando estritamente necessário para a tutela da sua saúde, por profissionais de saúde, ou mediante o seu consentimento específico e destacado.</p>
+        </div>
+        <p>Este site é uma vitrine institucional: <strong>não solicite diagnósticos nem envie exames por aqui</strong>. Qualquer informação de saúde compartilhada por você em mensagens é protegida pelo <strong>sigilo médico</strong> e utilizada apenas para viabilizar o seu atendimento. O prontuário médico é mantido separadamente, conforme as normas do Conselho Federal de Medicina.</p>
+      </section>
+
+      <section id="cookies">
+        <h2><span class="num">05</span> Cookies e tecnologias de rastreamento</h2>
+        <p>Cookies são pequenos arquivos armazenados no seu dispositivo. Utilizamos três categorias:</p>
+        <ul>
+          <li><strong>Necessários</strong> — indispensáveis ao funcionamento do site (navegação e segurança). Não podem ser desativados e não dependem de consentimento;</li>
+          <li><strong>Analíticos</strong> — medem, de forma agregada, como o site é usado (ex.: Google Analytics), ajudando a melhorá-lo;</li>
+          <li><strong>Marketing</strong> — permitem mensurar e personalizar anúncios (ex.: Google Ads e Meta Pixel), inclusive remarketing para quem já nos visitou.</li>
+        </ul>
+        <p>Os cookies analíticos e de marketing só são ativados <strong>após o seu consentimento</strong>. Enquanto você não aceita, esse rastreamento permanece bloqueado (utilizamos o <em>Consent Mode</em> do Google como padrão de negação). Você pode aceitar, recusar ou personalizar suas escolhas a qualquer momento em <a href="index.html#cookies"><strong>Preferências de cookies</strong></a> (também disponível no rodapé da página inicial). Além disso, é possível bloquear cookies nas configurações do seu navegador.</p>
+      </section>
+
+      <section id="compartilhamento">
+        <h2><span class="num">06</span> Compartilhamento de dados</h2>
+        <p>Nós <strong>não vendemos</strong> seus dados pessoais. Podemos compartilhá-los apenas com:</p>
+        <ul>
+          <li><strong>Provedores de tecnologia</strong> que operam por nossa conta (hospedagem, comunicação e mensageria, como o WhatsApp);</li>
+          <li><strong>Plataformas de medição e publicidade</strong> (Google e Meta), quando você consente com cookies analíticos/de marketing;</li>
+          <li><strong>Autoridades públicas</strong>, quando exigido por lei, ordem judicial ou regulação.</li>
+        </ul>
+      </section>
+
+      <section id="internacional">
+        <h2><span class="num">07</span> Transferência internacional</h2>
+        <p>Alguns parceiros (por exemplo, Google e Meta) podem processar dados em servidores fora do Brasil. Nesses casos, exigimos que a transferência ocorra com salvaguardas adequadas e em conformidade com o art. 33 da LGPD.</p>
+      </section>
+
+      <section id="retencao">
+        <h2><span class="num">08</span> Por quanto tempo guardamos</h2>
+        <p>Mantemos seus dados apenas pelo tempo necessário às finalidades desta política ou ao cumprimento de obrigações legais. Registros médicos são guardados pelo prazo mínimo exigido pela legislação e pelas normas do Conselho Federal de Medicina. Dados de navegação são retidos por períodos limitados, conforme a ferramenta utilizada.</p>
+      </section>
+
+      <section id="direitos">
+        <h2><span class="num">09</span> Seus direitos</h2>
+        <p>A LGPD (art. 18) garante a você, titular dos dados, os seguintes direitos:</p>
+        <div class="rights">
+          <div class="right-card"><div class="rc-t">Confirmação e acesso</div><p>Saber se tratamos seus dados e acessá-los.</p></div>
+          <div class="right-card"><div class="rc-t">Correção</div><p>Atualizar dados incompletos ou incorretos.</p></div>
+          <div class="right-card"><div class="rc-t">Anonimização ou eliminação</div><p>De dados desnecessários ou tratados em desconformidade.</p></div>
+          <div class="right-card"><div class="rc-t">Portabilidade</div><p>Transferir seus dados a outro fornecedor.</p></div>
+          <div class="right-card"><div class="rc-t">Revogação do consentimento</div><p>Retirar a qualquer momento o consentimento dado.</p></div>
+          <div class="right-card"><div class="rc-t">Informação e oposição</div><p>Saber com quem compartilhamos e opor-se a tratamentos.</p></div>
+        </div>
+        <p>Para exercer qualquer direito, fale com nosso Encarregado (seção 13). Você também pode peticionar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+      </section>
+
+      <section id="seguranca">
+        <h2><span class="num">10</span> Segurança da informação</h2>
+        <p>Adotamos medidas técnicas e administrativas razoáveis para proteger seus dados contra acessos não autorizados, perda, alteração ou divulgação indevida. Nenhum sistema é 100% infalível, mas trabalhamos continuamente para reduzir riscos.</p>
+      </section>
+
+      <section id="menores">
+        <h2><span class="num">11</span> Menores de idade</h2>
+        <p>O tratamento de dados de crianças e adolescentes é realizado sempre no melhor interesse do menor e, quando aplicável, mediante consentimento específico de um dos pais ou responsável legal, conforme o art. 14 da LGPD.</p>
+      </section>
+
+      <section id="alteracoes">
+        <h2><span class="num">12</span> Alterações desta política</h2>
+        <p>Podemos atualizar esta política periodicamente. A data da última revisão está indicada no topo do documento. Recomendamos consultá-la regularmente; alterações relevantes poderão ser comunicadas no site.</p>
+      </section>
+
+      <section id="contato">
+        <h2><span class="num">13</span> Encarregado (DPO) e contato</h2>
+        <div class="contact-box">
+          <h3>Encarregado pelo Tratamento de Dados</h3>
+          <p>Para dúvidas sobre esta política ou para exercer seus direitos, entre em contato:</p>
+          <div class="rows">
+            <div class="r"><span class="k">Encarregado(a)</span> <span class="ph">Nome do Encarregado</span></div>
+            <div class="r"><span class="k">E-mail</span> <a href="mailto:privacidade@centrooftalmologicotaubate.com.br"><span class="ph">privacidade@centrooftalmologicotaubate.com.br</span></a></div>
+            <div class="r"><span class="k">Telefone</span> <a href="tel:+551236335666">(12) 3633-5666</a></div>
+            <div class="r"><span class="k">Endereço</span> Av. Tiradentes, 101 — 8º andar — Taubaté/SP</div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap f-main">
+    <div class="f-logo">
+      <img src="assets/logo/cotlogo-white.svg" alt="Centro Oftalmológico de Taubaté">
+      <p>Excelência e precisão em saúde ocular. Referência em Taubaté e Região.</p>
+    </div>
+    <div>
+      <h5>Responsabilidade Técnica</h5>
+      <p class="med-row">Diretor Técnico Médico: <b>Dr. Ivo Rocha</b> — CRM/SP 81.810 · <span class="rqe">RQE 00000</span></p>
+      <p class="med-row">Dr. Ivo Rocha Neto — Oftalmologia · CRM/SP 173.991 · <span class="rqe">RQE 00000</span></p>
+      <p class="med-note">Conteúdo de caráter informativo, em conformidade com o Código de Ética Médica e a Resolução CFM nº 2.336/2023.</p>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="wrap">
+      <div class="meta">© 2026 Centro Oftalmológico de Taubaté · CNPJ <span class="ph" style="background:rgba(255,255,255,.12);border-bottom-color:rgba(255,255,255,.4);">00.000.000/0001-00</span></div>
+      <a href="index.html">Voltar ao site</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

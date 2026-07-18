@@ -4,6 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
+<!-- ========= CONSENTIMENTO (LGPD / Google Consent Mode v2) =========
+     Por padrão, todo rastreamento de marketing/analytics fica BLOQUEADO
+     até o usuário aceitar no banner de cookies. Isso protege o tráfego pago
+     (Google Ads / Meta) e mantém conformidade com a LGPD. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+</script>
+
 <!-- ========= SEO / PRIMARY ========= -->
 <!-- TODO: antes de publicar, troque "https://centrooftalmologicotaubate.com.br" pelo domínio real (canonical, og:url, og:image, twitter:image e no JSON-LD). -->
 <title>Centro Oftalmológico de Taubaté | Oftalmologista em Taubaté-SP</title>
@@ -218,8 +236,8 @@
   .doc-card{ position:absolute; z-index:1; overflow:hidden; border:1px solid rgba(170,167,242,.25); border-radius:var(--r-xl); background:#cbd6d4; box-shadow:0 40px 76px -28px rgba(0,0,0,.72); transition:box-shadow .45s ease, border-color .45s ease; }
   .doc-card img{ width:100%; height:100%; object-fit:cover; object-position:center center; display:block; }
   .doc-card.lg{ left:0; top:0; width:64%; aspect-ratio:4 / 5; }
-  .doc-card.sm{ right:0; top:clamp(84px,7vw,100px); width:50%; aspect-ratio:2 / 3; z-index:2; border-color:rgba(255,255,255,.18); box-shadow:0 44px 88px -24px rgba(0,0,0,.8); }
-  .doc-card.sm img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center top; transform:translateY(-6px); }
+  .doc-card.sm{ right:0; top:clamp(112px,10vw,140px); width:52%; aspect-ratio:4 / 5; z-index:2; border-color:rgba(255,255,255,.18); box-shadow:0 44px 88px -24px rgba(0,0,0,.8); }
+  .doc-card.sm img{ object-position:center top; }
   .doc-card:hover{ border-color:rgba(170,167,242,.6); box-shadow:0 54px 96px -26px rgba(0,0,0,.82); }
   .doc-card .tag{ position:absolute; top:14px; left:14px; z-index:2; padding:7px 13px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; background:rgba(0,0,60,.5); color:var(--lavender); backdrop-filter:blur(6px); border:1px solid rgba(170,167,242,.3); }
   .doc-card .scrim{ position:absolute; left:0; right:0; bottom:0; padding:52px 20px 20px; background:linear-gradient(to top, rgba(0,0,70,.96), rgba(0,0,70,.6) 50%, transparent); }
@@ -440,9 +458,22 @@
   footer h5{ font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--lavender); font-weight:600; margin-bottom:16px; }
   footer .f-col a, footer .f-col span{ display:block; font-size:14px; color:rgba(255,255,255,.72); margin-bottom:10px; }
   footer .f-col a:hover{ color:#fff; }
+  footer .f-med{ border-top:1px solid rgba(255,255,255,.12); }
+  footer .f-med .wrap{ padding:22px 0; display:grid; grid-template-columns:1.5fr 1fr; gap:20px 40px; align-items:start; }
+  footer .f-med h5{ margin-bottom:12px; }
+  footer .f-med .med-row{ font-size:13px; line-height:1.6; color:rgba(255,255,255,.7); margin-bottom:7px; }
+  footer .f-med .med-row b{ color:#fff; font-weight:600; }
+  footer .f-med .med-row .rqe{ color:var(--lavender); font-weight:600; letter-spacing:.02em; }
+  footer .f-med .med-note{ font-size:12px; line-height:1.65; color:rgba(255,255,255,.5); }
   footer .f-bottom{ border-top:1px solid rgba(255,255,255,.12); }
   footer .f-bottom .wrap{ padding-top:22px; padding-bottom:26px; display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center; }
   footer .f-bottom .meta{ font-size:12.5px; color:rgba(255,255,255,.55); line-height:1.6; }
+  footer .f-bottom .f-links{ display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; }
+  footer .f-bottom .f-links a{ font-size:12.5px; color:rgba(255,255,255,.75); }
+  footer .f-bottom .f-links a:hover{ color:#fff; }
+  footer .f-bottom .f-links .sep{ color:rgba(255,255,255,.25); }
+  footer .f-bottom .f-links button.link-btn{ font:inherit; font-size:12.5px; color:rgba(255,255,255,.75); background:none; border:0; padding:0; cursor:pointer; }
+  footer .f-bottom .f-links button.link-btn:hover{ color:#fff; }
   footer .f-wave{ line-height:0; opacity:.2; }
   footer .f-wave svg{ width:100%; height:40px; }
 
@@ -481,7 +512,7 @@
     .duo-cap{ margin-bottom:14px; }
     .hero-duo{ height:clamp(460px,80vw,620px); }
     .doc-card.lg{ width:64%; }
-    .doc-card.sm{ top:80px; width:48%; }
+    .doc-card.sm{ top:clamp(96px,13vw,124px); width:50%; }
     .spec-layout{ grid-template-columns:1fr; gap:24px; }
     .spec-aside{ position:static; }
     .sp-photo img{ height:clamp(220px,34vw,300px); }
@@ -501,11 +532,13 @@
     .sec{ padding-top:64px; padding-bottom:64px; }
     .sec.wrap{ padding-left:max(20px,env(safe-area-inset-left)); padding-right:max(20px,env(safe-area-inset-right)); }
     /* Preserve the floating overlap while keeping each portrait close to its source ratio. */
-    .hero-visual{ max-width:430px; margin:0 auto; }
-    .hero-duo{ height:clamp(340px,95vw,410px); }
+    .hero-visual{ max-width:420px; margin:0 auto; }
+    .hero-duo{ height:clamp(360px,98vw,430px); }
     .doc-card{ border-radius:22px; }
-    .doc-card.lg{ width:68%; }
-    .doc-card.sm{ top:64px; width:50%; }
+    .doc-card.lg{ width:66%; }
+    .doc-card.sm{ top:clamp(84px,22vw,112px); width:56%; }
+    .doc-card.sm .dname{ font-size:16.5px; }
+    .doc-card.sm .dcrm{ font-size:12px; }
     .doc-card .scrim{ padding:56px 14px 16px; }
     .hero-stats .st{ padding-right:18px; margin-right:18px; }
     .spec-cards{ grid-template-columns:1fr; }
@@ -583,6 +616,7 @@
     .doc .info{ min-width:0; padding:24px 20px 22px; }
     .doc .info h4,.doc .lead,.doc .creds span{ overflow-wrap:anywhere; }
     .doc .dtag{ white-space:normal; }
+    footer .f-med .wrap{ grid-template-columns:1fr; gap:20px; }
 
     .contact-card{ border-radius:22px; }
     .contact-info{ min-width:0; padding:32px 20px; gap:22px; }
@@ -715,7 +749,7 @@
         </figure>
         <figure class="doc-card sm anim pop" style="--d:5">
           <span class="tag">Inovação</span>
-          <img src="assets/img/Dr. Ivo Rocha Neto - Foto Final (12).jpg (1).jpeg" width="1062" height="1593" decoding="async" alt="Dr. Ivo Rocha Neto, oftalmologista">
+          <img src="assets/img/neto-hero.jpg" width="900" height="1125" decoding="async" alt="Dr. Ivo Rocha Neto, oftalmologista">
           <figcaption class="scrim">
             <div class="dname">Dr. Ivo Rocha Neto</div>
             <div class="dcrm">CRM 173.991</div>
@@ -945,10 +979,29 @@
       <span>Av. Tiradentes, 101 — 8º andar<br>Taubaté/SP · CEP 12030-180</span>
     </div>
   </div>
+  <!-- Identificação médica (exigência do Código de Ética Médica / Resolução CFM nº 2.336/2023) -->
+  <div class="f-med">
+    <div class="wrap">
+      <div>
+        <h5>Responsabilidade Técnica</h5>
+        <p class="med-row">Diretor Técnico Médico: <b>Dr. Ivo Rocha</b> — CRM/SP 81.810 · <span class="rqe">RQE 00000</span></p>
+        <p class="med-row">Dr. Ivo Rocha — Oftalmologia · CRM/SP 81.810 · <span class="rqe">RQE 00000</span></p>
+        <p class="med-row">Dr. Ivo Rocha Neto — Oftalmologia · CRM/SP 173.991 · <span class="rqe">RQE 00000</span></p>
+      </div>
+      <div>
+        <h5>Aviso</h5>
+        <p class="med-note">As informações deste site têm caráter estritamente informativo e não substituem a consulta, o diagnóstico ou o tratamento médico. Resultados variam conforme cada caso. Publicidade em conformidade com o Código de Ética Médica e a Resolução CFM nº 2.336/2023.</p>
+      </div>
+    </div>
+  </div>
   <div class="f-bottom">
     <div class="wrap">
-      <div class="meta">Centro Oftalmológico de Taubaté · CNPJ <span class="ph-cnpj">00.000.000/0001-00</span></div>
-      <div class="meta"><a href="#" style="color:rgba(255,255,255,.75);">Política de Privacidade</a></div>
+      <div class="meta">© 2026 Centro Oftalmológico de Taubaté · CNPJ <span class="ph-cnpj">00.000.000/0001-00</span></div>
+      <div class="f-links">
+        <a href="privacidade.html">Política de Privacidade</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <button type="button" class="link-btn" id="cookiePrefsBtn">Preferências de cookies</button>
+      </div>
     </div>
   </div>
   <div class="f-wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 Q90,0 180,30 Q270,60 360,30 Q450,0 540,30 Q630,60 720,30 Q810,0 900,30 Q990,60 1080,30 Q1170,0 1260,30 Q1350,60 1440,30" fill="none" stroke="#AAA7F2" stroke-width="2"/></svg></div>
@@ -979,6 +1032,116 @@
 
 <!-- ============ WHATSAPP FAB ============ -->
 <a class="fab" href="https://wa.me/5512988537005" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="wa-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-wa"/></svg></a>
+
+<!-- ============ BANNER DE COOKIES (LGPD) ============ -->
+<style>
+  .cc-banner{ position:fixed; left:50%; bottom:20px; transform:translate(-50%,140%); z-index:90;
+    width:min(960px, calc(100vw - 32px)); box-sizing:border-box;
+    display:grid; grid-template-columns:1fr auto; align-items:center; gap:20px 28px;
+    padding:22px 26px; border-radius:20px;
+    background:linear-gradient(160deg, rgba(0,0,80,.92), rgba(9,9,45,.94)); color:#fff;
+    border:1px solid rgba(170,167,242,.28); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+    box-shadow:0 30px 70px -22px rgba(0,0,0,.7); opacity:0; visibility:hidden;
+    transition:transform .6s cubic-bezier(.2,.7,.2,1), opacity .5s ease, visibility .5s; }
+  .cc-banner.show{ transform:translate(-50%,0); opacity:1; visibility:visible; }
+  .cc-copy{ min-width:0; }
+  .cc-copy .cc-head{ display:flex; align-items:center; gap:10px; font-size:15px; font-weight:700; letter-spacing:-.01em; margin-bottom:6px; }
+  .cc-copy .cc-head .cc-ic{ display:inline-flex; width:30px; height:30px; border-radius:9px; background:rgba(170,167,242,.16); border:1px solid rgba(170,167,242,.3); align-items:center; justify-content:center; color:var(--lavender); flex:none; }
+  .cc-copy .cc-head .cc-ic svg{ width:17px; height:17px; }
+  .cc-copy p{ font-size:13px; line-height:1.6; color:rgba(255,255,255,.72); max-width:60ch; }
+  .cc-copy p a{ color:var(--lavender); font-weight:600; text-decoration:underline; text-underline-offset:2px; }
+  .cc-actions{ display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }
+  .cc-btn{ font:inherit; font-size:13.5px; font-weight:600; cursor:pointer; border-radius:12px; padding:12px 20px; min-height:44px; white-space:nowrap; border:1px solid transparent; transition:background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }
+  .cc-btn:focus-visible{ outline:2px solid var(--lavender); outline-offset:2px; }
+  .cc-btn.ghost{ background:transparent; border-color:rgba(255,255,255,.24); color:rgba(255,255,255,.85); }
+  .cc-btn.ghost:hover{ background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.4); }
+  .cc-btn.solid{ background:#fff; color:var(--navy); }
+  .cc-btn.solid:hover{ transform:translateY(-1px); box-shadow:0 12px 26px -12px rgba(255,255,255,.5); }
+
+  /* Preferences dialog */
+  .cc-modal{ position:fixed; inset:0; z-index:115; display:none; }
+  .cc-modal.open{ display:block; }
+  .cc-modal .cc-back{ position:absolute; inset:0; background:rgba(4,4,22,.62); -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px); opacity:0; transition:opacity .3s ease; }
+  .cc-modal.open .cc-back{ opacity:1; }
+  .cc-modal .cc-dialog{ position:absolute; left:50%; top:50%; transform:translate(-50%,-46%); width:min(560px, calc(100vw - 28px)); max-height:min(88vh,720px); overflow:auto; box-sizing:border-box;
+    background:#fff; color:var(--ink); border-radius:22px; padding:30px 30px 26px; box-shadow:0 40px 90px -20px rgba(0,0,0,.5); opacity:0; transition:transform .4s cubic-bezier(.2,.7,.2,1), opacity .3s ease; }
+  .cc-modal.open .cc-dialog{ transform:translate(-50%,-50%); opacity:1; }
+  .cc-dialog h3{ font-size:21px; font-weight:800; letter-spacing:-.01em; color:var(--navy); }
+  .cc-dialog .cc-sub{ margin-top:8px; font-size:13.5px; line-height:1.6; color:rgba(11,11,51,.65); }
+  .cc-dialog .cc-sub a{ color:var(--royal); font-weight:600; text-decoration:underline; }
+  .cc-cat{ margin-top:18px; padding:16px 18px; border:1px solid rgba(11,11,51,.1); border-radius:14px; display:grid; grid-template-columns:1fr auto; gap:6px 16px; align-items:center; }
+  .cc-cat .cc-cat-t{ font-size:14.5px; font-weight:700; color:var(--ink); }
+  .cc-cat p{ grid-column:1/2; font-size:12.5px; line-height:1.55; color:rgba(11,11,51,.6); }
+  .cc-cat .cc-fixed{ font-size:12px; font-weight:700; color:var(--royal); letter-spacing:.02em; }
+  /* toggle */
+  .cc-sw{ position:relative; width:46px; height:26px; flex:none; }
+  .cc-sw input{ position:absolute; opacity:0; width:100%; height:100%; margin:0; cursor:pointer; }
+  .cc-sw .track{ position:absolute; inset:0; border-radius:999px; background:rgba(11,11,51,.2); transition:background .25s ease; }
+  .cc-sw .track::after{ content:""; position:absolute; top:3px; left:3px; width:20px; height:20px; border-radius:50%; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,.28); transition:transform .25s cubic-bezier(.2,.7,.2,1); }
+  .cc-sw input:checked + .track{ background:var(--royal); }
+  .cc-sw input:checked + .track::after{ transform:translateX(20px); }
+  .cc-sw input:focus-visible + .track{ outline:2px solid var(--royal); outline-offset:2px; }
+  .cc-modal .cc-foot{ margin-top:24px; display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }
+  .cc-modal .cc-btn.solid{ background:var(--navy); color:#fff; }
+  .cc-modal .cc-btn.solid:hover{ box-shadow:0 12px 26px -12px rgba(0,0,145,.6); }
+  .cc-modal .cc-btn.ghost{ border-color:rgba(11,11,51,.2); color:rgba(11,11,51,.75); }
+  .cc-modal .cc-btn.ghost:hover{ background:rgba(11,11,51,.05); border-color:rgba(11,11,51,.35); }
+
+  @media (max-width:720px){
+    .cc-banner{ grid-template-columns:1fr; gap:16px; padding:20px; bottom:12px; width:calc(100vw - 20px); }
+    .cc-actions{ justify-content:stretch; }
+    .cc-actions .cc-btn{ flex:1 1 auto; text-align:center; }
+    .cc-actions .cc-btn.solid{ flex-basis:100%; order:-1; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .cc-banner, .cc-modal .cc-back, .cc-modal .cc-dialog{ transition:opacity .2s ease, visibility .2s; }
+    .cc-banner{ transform:translate(-50%,0); }
+  }
+</style>
+
+<div class="cc-banner" id="ccBanner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" aria-describedby="ccDesc">
+  <div class="cc-copy">
+    <div class="cc-head">
+      <span class="cc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5Z"/><path d="M8.5 8.5h.01M16 15.5h.01M12 17h.01M7 13h.01"/></svg></span>
+      Nós usamos cookies
+    </div>
+    <p id="ccDesc">Utilizamos cookies para melhorar sua navegação e, com seu consentimento, para mensurar audiência e anúncios. Você decide o que aceitar. Saiba mais na <a href="privacidade.html">Política de Privacidade</a>.</p>
+  </div>
+  <div class="cc-actions">
+    <button type="button" class="cc-btn ghost" data-cc="reject">Rejeitar</button>
+    <button type="button" class="cc-btn ghost" data-cc="prefs">Preferências</button>
+    <button type="button" class="cc-btn solid" data-cc="accept">Aceitar todos</button>
+  </div>
+</div>
+
+<div class="cc-modal" id="ccModal" role="dialog" aria-modal="true" aria-labelledby="ccModalTitle" aria-hidden="true">
+  <div class="cc-back" data-cc="close"></div>
+  <div class="cc-dialog" role="document">
+    <h3 id="ccModalTitle">Preferências de cookies</h3>
+    <p class="cc-sub">Escolha quais categorias deseja permitir. Você pode alterar essa decisão a qualquer momento. Detalhes na <a href="privacidade.html">Política de Privacidade</a>.</p>
+
+    <div class="cc-cat">
+      <span class="cc-cat-t">Necessários</span>
+      <span class="cc-fixed">Sempre ativos</span>
+      <p>Essenciais para o funcionamento do site (navegação e segurança). Não podem ser desativados.</p>
+    </div>
+    <div class="cc-cat">
+      <span class="cc-cat-t">Analíticos</span>
+      <label class="cc-sw"><input type="checkbox" id="ccAnalytics" aria-label="Permitir cookies analíticos"><span class="track"></span></label>
+      <p>Ajudam a entender como os visitantes usam o site (ex.: Google Analytics), de forma agregada.</p>
+    </div>
+    <div class="cc-cat">
+      <span class="cc-cat-t">Marketing</span>
+      <label class="cc-sw"><input type="checkbox" id="ccMarketing" aria-label="Permitir cookies de marketing"><span class="track"></span></label>
+      <p>Permitem mensurar e personalizar anúncios (ex.: Google Ads e Meta), inclusive remarketing.</p>
+    </div>
+
+    <div class="cc-foot">
+      <button type="button" class="cc-btn ghost" data-cc="reject">Rejeitar tudo</button>
+      <button type="button" class="cc-btn solid" data-cc="save">Salvar preferências</button>
+    </div>
+  </div>
+</div>
 
 <script>
   // Lucide icons (retry as stream settles)
@@ -1194,6 +1357,113 @@
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
     Object.keys(map).forEach(function(id){ var s = document.getElementById(id); if (s) spy.observe(s); });
   })();
+</script>
+
+<!-- ============ CONSENTIMENTO DE COOKIES (LGPD + Consent Mode) ============ -->
+<script>
+(function(){
+  // === CONFIGURAÇÃO: preencha os IDs quando o cliente fornecer (tráfego pago) ===
+  // Enquanto vazios, nada é carregado — o site permanece 100% funcional.
+  var TRACKING = {
+    ga4:       '',   // ex.: 'G-XXXXXXXXXX'  (Google Analytics 4)
+    googleAds: '',   // ex.: 'AW-XXXXXXXXX'  (Google Ads)
+    metaPixel: ''    // ex.: '000000000000000' (Meta/Facebook Pixel)
+  };
+
+  var KEY = 'cot_consent_v1';
+  var banner = document.getElementById('ccBanner');
+  var modal  = document.getElementById('ccModal');
+  var swA = document.getElementById('ccAnalytics');
+  var swM = document.getElementById('ccMarketing');
+  var loaded = false;
+
+  function read(){
+    try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e){ return null; }
+  }
+  function save(c){
+    try { localStorage.setItem(KEY, JSON.stringify(c)); } catch(e){}
+  }
+  function gtagUpdate(c){
+    if (typeof gtag !== 'function') return;
+    gtag('consent','update',{
+      analytics_storage: c.analytics ? 'granted' : 'denied',
+      ad_storage:        c.marketing ? 'granted' : 'denied',
+      ad_user_data:      c.marketing ? 'granted' : 'denied',
+      ad_personalization:c.marketing ? 'granted' : 'denied'
+    });
+  }
+
+  function injectScript(src){ var s=document.createElement('script'); s.async=true; s.src=src; document.head.appendChild(s); }
+
+  function loadTracking(c){
+    if (loaded) return;
+    // Google (Analytics/Ads) — carrega o gtag.js só se houver algum ID e consentimento aplicável.
+    var gId = TRACKING.ga4 || TRACKING.googleAds;
+    if (gId && (c.analytics || c.marketing)){
+      injectScript('https://www.googletagmanager.com/gtag/js?id=' + gId);
+      gtag('js', new Date());
+      if (TRACKING.ga4)       gtag('config', TRACKING.ga4);
+      if (TRACKING.googleAds) gtag('config', TRACKING.googleAds);
+    }
+    // Meta Pixel — só com consentimento de marketing.
+    if (TRACKING.metaPixel && c.marketing){
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      window.fbq('init', TRACKING.metaPixel); window.fbq('track', 'PageView');
+    }
+    loaded = true;
+  }
+
+  function apply(c){ gtagUpdate(c); if (c.analytics || c.marketing) loadTracking(c); }
+
+  function showBanner(){ if (banner){ banner.classList.add('show'); } }
+  function hideBanner(){ if (banner){ banner.classList.remove('show'); } }
+
+  function openModal(){
+    var c = read() || { analytics:false, marketing:false };
+    if (swA) swA.checked = !!c.analytics;
+    if (swM) swM.checked = !!c.marketing;
+    if (modal){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); }
+  }
+  function closeModal(){ if (modal){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); } }
+
+  function commit(c){
+    c.ts = new Date().toISOString();
+    save(c); apply(c); hideBanner(); closeModal();
+  }
+
+  // Wire buttons
+  document.querySelectorAll('[data-cc]').forEach(function(el){
+    el.addEventListener('click', function(){
+      var a = el.getAttribute('data-cc');
+      if (a === 'accept') commit({ necessary:true, analytics:true,  marketing:true });
+      else if (a === 'reject') commit({ necessary:true, analytics:false, marketing:false });
+      else if (a === 'prefs') openModal();
+      else if (a === 'save') commit({ necessary:true, analytics: swA && swA.checked, marketing: swM && swM.checked });
+      else if (a === 'close') closeModal();
+    });
+  });
+
+  // Footer "Preferências de cookies"
+  var prefsBtn = document.getElementById('cookiePrefsBtn');
+  if (prefsBtn) prefsBtn.addEventListener('click', openModal);
+
+  // Deep-link: index.html#cookies (ou #preferencias) abre o painel de preferências
+  function checkHash(){ var h = (location.hash || '').toLowerCase(); if (h === '#cookies' || h === '#preferencias') openModal(); }
+  window.addEventListener('hashchange', checkHash);
+  checkHash();
+
+  // Esc fecha o modal
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  // Estado inicial
+  var existing = read();
+  if (existing){ apply(existing); }
+  else { setTimeout(showBanner, 700); }
+})();
 </script>
 </body>
 </html>
